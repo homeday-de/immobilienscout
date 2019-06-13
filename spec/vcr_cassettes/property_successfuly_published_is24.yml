@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/publish
+    body:
+      encoding: UTF-8
+      string: '{"common.publishObject":{"realEstate":{"@id":"314712920"},"publishChannel":{"@id":"10000"}}}'
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=sCgpTMwc5g,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1552553013,oauth_token=access_token,oauth_version=1.0,oauth_signature=D1rujGv1ek5mBxC4DYRCfKA%2FdKE%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: ''
+    headers:
+      L-Is24-Requestrefnum:
+      - 6a15bae4-51d9-43af-81b3-46206544425b
+      L-Is24-Apiclient:
+      - 'consumer_key'
+      L-Is24-Causerid:
+      - '117533741'
+      L-Is24-Resourceid:
+      - "-"
+      Location:
+      - http://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/publish/314712920_10000
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '174'
+      Date:
+      - Thu, 14 Mar 2019 08:43:38 GMT
+      Server:
+      - Apache
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"MESSAGE_RESOURCE_CREATED","message":"Resource
+        [publish] with id [314712920_10000] has been created.","id":"314712920_10000"}}]}'
+    http_version:
+  recorded_at: Thu, 14 Mar 2019 08:43:38 GMT
+recorded_with: VCR 3.0.3

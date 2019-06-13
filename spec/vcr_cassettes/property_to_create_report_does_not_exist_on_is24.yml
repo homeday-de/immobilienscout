@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/thisIsNotAValidId/dailyreport?dateFrom=2019-06-11&dateTo=2019-06-11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=bqNvS2srpQ,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560247200,oauth_token=access_token,oauth_version=1.0,dateFrom=2019-06-11,dateTo=2019-06-11,oauth_signature=h9q5Wd0pfEqyhpk4DYBp44zhxUk%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '150'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - private
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      L-Is24-Requestrefnum:
+      - 71b0115c-cba8-473c-beef-2c9d935a4f1b
+      L-Is24-Apiclient:
+      - 'consumer_key'
+      L-Is24-Causerid:
+      - '117533741'
+      L-Is24-Resourceid:
+      - thisIsNotAValidId
+      Date:
+      - Tue, 11 Jun 2019 12:29:28 GMT
+      Server:
+      - Apache
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 33be852abb39a8e95242a0c764cdc483.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - BNcwe7-sLojHGlldoakTAbMUIwGv-1-MTCDL7JEcQvdbza6IhknE7Q==
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"ERROR_RESOURCE_NOT_FOUND","message":"Resource
+        [realestate] with id [thisIsNotAValidId] not found. "}}]}'
+    http_version:
+  recorded_at: Tue, 11 Jun 2019 10:00:00 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate
+    body:
+      encoding: UTF-8
+      string: '{"realestates.apartmentBuy":{"externalId":"extID123","title":"RestAPi
+        appartmentBuy","creationDate":"2014-08-12T15:56:52.000+02:00","address":{"street":"Andreasstraße","houseNumber":"10","postcode":"10243","city":"Berlin","wgs84Coordinate":{"latitude":52.51245,"longitude":13.43134}},"apiSearchData":{"searchField1":"apiSearchField1","searchField2":"apiSearchField2","searchField3":"apiSearchField3"},"realEstateState":"INACTIVE","descriptionNote":"Objektbeschreibung(noch
+        2000 Zeichen) description-note \n after line break this text is in the next
+        row","furnishingNote":"Ausstattung(noch 2000 Zeichen)","locationNote":"Lage(noch
+        2000 Zeichen)","otherNote":"Sonstiges(noch 2000 Zeichen)","showAddress":"true","apartmentType":"MAISONETTE","floor":2,"lift":"true","energyCertificate":{"energyCertificateAvailability":"AVAILABLE","energyCertificateCreationDate":"BEFORE_01_MAY_2014"},"cellar":"YES","handicappedAccessible":"YES","numberOfParkingSpaces":1,"condition":"WELL_KEPT","lastRefurbishment":2010,"interiorQuality":"SOPHISTICATED","constructionYear":1995,"freeFrom":"sofort","heatingTypeEnev2014":"FLOOR_HEATING","energySourcesEnev2014":{"energySourceEnev2014":["WOOD_CHIPS"]},"buildingEnergyRatingType":"ENERGY_CONSUMPTION","thermalCharacteristic":123.85,"energyConsumptionContainsWarmWater":"YES","numberOfFloors":5,"usableFloorSpace":70,"numberOfBedRooms":1,"numberOfBathRooms":2,"guestToilet":"YES","parkingSpaceType":"UNDERGROUND_GARAGE","rented":"YES","rentalIncome":895,"listed":"YES","parkingSpacePrice":15000,"summerResidencePractical":"YES","price":{"value":175000,"currency":"EUR","marketingType":"PURCHASE","priceIntervalType":"ONE_TIME_CHARGE"},"livingSpace":75,"numberOfRooms":3,"energyPerformanceCertificate":"true","builtInKitchen":"true","balcony":"true","certificateOfEligibilityNeeded":"false","garden":"true","courtage":{"hasCourtage":"YES","courtage":"Provisionshöhe
+        (brutto)","courtageNote":"Provisionshinweis (noch 500 Zeichen)"},"serviceCharge":575}}'
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=tmbA3TQig,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1552498199,oauth_token=access_token,oauth_version=1.0,oauth_signature=loVRCNQtfaJiZFu2QilOUqgPa6E%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 412
+      message: ''
+    headers:
+      L-Is24-Requestrefnum:
+      - b98bb484-6b78-4b7f-869f-4842138062d9
+      L-Is24-Apiclient:
+      - 'consumer_key'
+      L-Is24-Causerid:
+      - '117533741'
+      L-Is24-Resourceid:
+      - "-"
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '190'
+      Date:
+      - Wed, 13 Mar 2019 17:29:59 GMT
+      Server:
+      - Apache
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"ERROR_RESOURCE_VALIDATION","message":"Error
+        while validating input for the resource. [MESSAGE: RealEstate already exists
+        for external id.]"}}]}'
+    http_version:
+  recorded_at: Wed, 13 Mar 2019 17:30:00 GMT
+recorded_with: VCR 3.0.3

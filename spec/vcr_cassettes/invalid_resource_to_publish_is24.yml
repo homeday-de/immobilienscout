@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/publish
+    body:
+      encoding: UTF-8
+      string: '{"common.publishObject":{"realEstate":{"@id":"1234567"},"publishChannel":{"@id":"10000"}}}'
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=N3n0wv29nA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1552567704,oauth_token=access_token,oauth_version=1.0,oauth_signature=QfZ9ai8yNS15aJpmej90VmFgtwY%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      L-Is24-Requestrefnum:
+      - ba986d09-5ded-4f77-8dae-6a3d90c69ceb
+      L-Is24-Apiclient:
+      - 'consumer_key'
+      L-Is24-Causerid:
+      - '117533741'
+      L-Is24-Resourceid:
+      - "-"
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '119'
+      Date:
+      - Thu, 14 Mar 2019 12:48:23 GMT
+      Server:
+      - Apache
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"ERROR_COMMON_RESOURCE_NOT_FOUND","message":"Resource
+        was not found."}}]}'
+    http_version:
+  recorded_at: Thu, 14 Mar 2019 12:48:24 GMT
+recorded_with: VCR 3.0.3

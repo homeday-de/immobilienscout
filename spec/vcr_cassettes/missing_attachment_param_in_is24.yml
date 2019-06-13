@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/71624000/attachment
+    body:
+      encoding: UTF-8
+      string: "-------------RubyMultipartPost\r\nContent-Disposition: form-data; name=\"attachment\"\r\n\r\n\r\n-------------RubyMultipartPost\r\nContent-Disposition:
+        form-data; name=\"metadata\"; filename=\"local.path\"\r\nContent-Length: 223\r\nContent-Type:
+        application/json\r\nContent-Transfer-Encoding: binary\r\n\r\n{\"common.attachment\":{\"@xmlns\":{\"common\":\"http://rest.immobilienscout24.de/schema/common/1.0\"},\"@xsi.type\":\"common:Picture\",\"title\":\"Nice
+        title\",\"externalId\":1,\"externalCheckSum\":null,\"floorplan\":false,\"titlePicture\":true}}\r\n-------------RubyMultipartPost--\r\n\r\n"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      - application/json
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost
+      Content-Length:
+      - '542'
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=7sAzkdKhwA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1549017604,oauth_token=access_token,oauth_version=1.0,oauth_signature=01T34a4Z1n68wMMtOmsrZIAvCso%3D
+  response:
+    status:
+      code: 412
+      message: ''
+    headers:
+      L-Is24-Requestrefnum:
+      - 96f9109f-71a4-481a-ab2c-89a08d321569
+      L-Is24-Apiclient:
+      - 'consumer_key'
+      L-Is24-Causerid:
+      - '117533741'
+      L-Is24-Resourceid:
+      - '71624000'
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '198'
+      Date:
+      - Fri, 01 Feb 2019 10:40:05 GMT
+      Server:
+      - Apache
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"ERROR_RESOURCE_VALIDATION","message":"Error
+        while validating input for the resource. [MESSAGE: the name of the attachment
+        file must be specified.]"}}]}'
+    http_version:
+  recorded_at: Fri, 01 Feb 2019 10:40:05 GMT
+recorded_with: VCR 3.0.3
