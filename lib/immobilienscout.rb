@@ -1,5 +1,3 @@
-require 'byebug'
-require 'timecop'
 require 'active_support'
 require 'active_support/core_ext'
 require 'immobilienscout/authenticator'
