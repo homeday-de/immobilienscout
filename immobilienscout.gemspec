@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name         = 'immobilienscout'
-  s.version      = '0.0.1'
+  s.version      = '0.0.2'
   s.date         = '2019-03-11'
   s.summary      = 'A ruby gem to handle Immobilienscout API'
   s.description  = 'This gem provides HTTP endpoints to connect your app with Immobilienscout API'
