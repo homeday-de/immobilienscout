@@ -14,6 +14,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'bundler/setup'
+require 'timecop'
 Bundler.setup
 
 require 'active_support'

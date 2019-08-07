@@ -7,52 +7,43 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      - application/xml
+      User-Agent:
+      - Ruby
+      Host:
+      - rest.sandbox-immobilienscout24.de
       Authorization:
       - OAuth oauth_consumer_key=consumer_key,oauth_nonce=8MaJe9Hz1A,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560247200,oauth_token=access_token,oauth_version=1.0,dateFrom=2019-06-11,dateTo=2019-06-10,oauth_signature=OIe3yizslk9ntSGxtBCh7tsPbwQ%3D
-      Content-Type:
-      - application/json
-      Accept:
-      - application/json
   response:
     status:
       code: 412
       message: ''
     headers:
       Content-Type:
-      - application/json;charset=UTF-8
+      - application/xml
       Content-Length:
-      - '210'
+      - '265'
       Connection:
       - keep-alive
-      Cache-Control:
-      - private
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      L-Is24-Requestrefnum:
-      - 979b2244-3fd6-405a-a3b8-c73540359e6f
-      L-Is24-Apiclient:
-      - 'consumer_key'
-      L-Is24-Causerid:
-      - '117533741'
-      L-Is24-Resourceid:
-      - '315270728'
       Date:
-      - Tue, 11 Jun 2019 12:27:37 GMT
-      Server:
-      - Apache
+      - Wed, 07 Aug 2019 12:32:13 GMT
       X-Cache:
       - Error from cloudfront
       Via:
-      - 1.1 261d871caba4097bc29b3ff8bd23af86.cloudfront.net (CloudFront)
+      - 1.1 3987a119dd762046470f5ba503a917ea.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - TXL51
+      - TXL52-C1
       X-Amz-Cf-Id:
-      - e2ureHav2uChFaCdtbmZFTK7AuSvX6UtinQpY6dgEdxCe6aAGg7sFQ==
+      - uhhy8MWYBBHdH5NllEHdPyb5rTCvlK2T5WV3jEW56dpFOaxvn7lYHA==
     body:
       encoding: UTF-8
-      string: '{"common.messages":[{"message":{"messageCode":"ERROR_COMMON_URL_PARAMETER_VALIDATION_FAILED","message":"The
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><message><messageCode>ERROR_COMMON_URL_PARAMETER_VALIDATION_FAILED</messageCode><message>The
         parameter [dateFrom = 2019-06-11 dateTo = 2019-06-10] has an invalid value
-        [Negative date range]."}}]}'
+        [Negative date range].</message></message>
     http_version:
-  recorded_at: Tue, 11 Jun 2019 10:00:00 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Wed, 07 Aug 2019 12:32:13 GMT
+recorded_with: VCR 4.0.0

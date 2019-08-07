@@ -12,13 +12,13 @@ module Immobilienscout
 
     def get
       auth_header = generate_auth_header('GET', @params)
-      headers = generate_headers(auth_header)
 
       url_with_query = "#{@url}?#{@params.to_query}"
       uri = URI.parse(url_with_query)
 
       request = Net::HTTP::Get.new(uri)
-      request.initialize_http_header(headers)
+      request.add_field('Authorization', auth_header)
+      request.add_field('Accept', 'application/xml')
 
       execute_request(uri, request)
     end

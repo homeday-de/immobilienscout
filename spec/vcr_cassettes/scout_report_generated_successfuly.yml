@@ -7,50 +7,42 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      - application/xml
+      User-Agent:
+      - Ruby
+      Host:
+      - rest.sandbox-immobilienscout24.de
       Authorization:
       - OAuth oauth_consumer_key=consumer_key,oauth_nonce=THDhqSKCuA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560247200,oauth_token=access_token,oauth_version=1.0,dateFrom=2019-06-11,dateTo=2019-06-11,oauth_signature=EAAkOGrMrk6UD83mcg7wqCh6afw%3D
-      Content-Type:
-      - application/json
-      Accept:
-      - application/json
   response:
     status:
       code: 200
       message: ''
     headers:
       Content-Type:
-      - application/json;charset=UTF-8
+      - application/xml
       Content-Length:
-      - '301'
+      - '558'
       Connection:
       - keep-alive
-      Cache-Control:
-      - private
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      L-Is24-Requestrefnum:
-      - 3ced33fa-f4f7-4a55-8c9e-ac81e73a64da
-      L-Is24-Apiclient:
-      - 'consumer_key'
-      L-Is24-Causerid:
-      - '117533741'
-      L-Is24-Resourceid:
-      - '315270728'
       Date:
-      - Tue, 11 Jun 2019 12:27:03 GMT
-      Server:
-      - Apache
+      - Wed, 07 Aug 2019 12:31:11 GMT
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 342c9b6ea7230889a22dcc532c1d3136.cloudfront.net (CloudFront)
+      - 1.1 fa133af2508a341e1ff6bfff526ba095.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - TXL51
+      - TXL52-C1
       X-Amz-Cf-Id:
-      - x4DYLoxn30X7uhLMobbsU9hoqyoNbHE1O0ZkY78C5Heatk7sKPDy8Q==
+      - 1ri-XlcKT5l4egxkebCOao8bHsGICe3YWVZeT2VDwYenlEoq6QBtzQ==
     body:
       encoding: UTF-8
-      string: '{"dailyReports":{"@objectNumber":"S3W0UP6C","reportDailyData":[{"date":"2019-06-11","matchesResultList":0,"displaysResultList":0,"exposeHits":0,"onShortList":0,"clicksHomepage":0,"emailContacts":0,"clicksSendUrl":0,"clickFocusPlacement":0,"showMiniExposeFocusPlacement":0,"displayFocusPlacement":0}]}}'
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><dailyReports
+        objectNumber="S3W0UP6C"><reportDailyData><date>2019-06-11</date><matchesResultList>0</matchesResultList><displaysResultList>0</displaysResultList><exposeHits>0</exposeHits><onShortList>0</onShortList><clicksHomepage>0</clicksHomepage><emailContacts>0</emailContacts><clicksSendUrl>0</clicksSendUrl><clickFocusPlacement>0</clickFocusPlacement><showMiniExposeFocusPlacement>0</showMiniExposeFocusPlacement><displayFocusPlacement>0</displayFocusPlacement></reportDailyData></dailyReports>
     http_version:
-  recorded_at: Tue, 11 Jun 2019 10:00:00 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Wed, 07 Aug 2019 12:31:11 GMT
+recorded_with: VCR 4.0.0

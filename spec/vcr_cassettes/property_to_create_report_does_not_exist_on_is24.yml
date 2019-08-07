@@ -7,49 +7,42 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      - application/xml
+      User-Agent:
+      - Ruby
+      Host:
+      - rest.sandbox-immobilienscout24.de
       Authorization:
       - OAuth oauth_consumer_key=consumer_key,oauth_nonce=bqNvS2srpQ,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560247200,oauth_token=access_token,oauth_version=1.0,dateFrom=2019-06-11,dateTo=2019-06-11,oauth_signature=h9q5Wd0pfEqyhpk4DYBp44zhxUk%3D
-      Content-Type:
-      - application/json
-      Accept:
-      - application/json
   response:
     status:
       code: 404
       message: ''
     headers:
       Content-Type:
-      - application/json;charset=UTF-8
+      - application/xml
       Content-Length:
-      - '150'
+      - '204'
       Connection:
       - keep-alive
-      Cache-Control:
-      - private
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      L-Is24-Requestrefnum:
-      - 71b0115c-cba8-473c-beef-2c9d935a4f1b
-      L-Is24-Apiclient:
-      - 'consumer_key'
-      L-Is24-Causerid:
-      - '117533741'
-      L-Is24-Resourceid:
-      - thisIsNotAValidId
       Date:
-      - Tue, 11 Jun 2019 12:29:28 GMT
-      Server:
-      - Apache
+      - Wed, 07 Aug 2019 14:43:53 GMT
       X-Cache:
       - Error from cloudfront
       Via:
-      - 1.1 33be852abb39a8e95242a0c764cdc483.cloudfront.net (CloudFront)
+      - 1.1 960b0b60c4f1507c51c75d8f9ab0dc91.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - TXL52-C1
       X-Amz-Cf-Id:
-      - BNcwe7-sLojHGlldoakTAbMUIwGv-1-MTCDL7JEcQvdbza6IhknE7Q==
+      - Emf7y8NCOHnl57q0HI18TL2gmAykWUzdaPHHde2f5iUF_RjUP0vZ3g==
     body:
       encoding: UTF-8
-      string: '{"common.messages":[{"message":{"messageCode":"ERROR_RESOURCE_NOT_FOUND","message":"Resource
-        [realestate] with id [thisIsNotAValidId] not found. "}}]}'
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><message><messageCode>ERROR_RESOURCE_NOT_FOUND</messageCode><message>Resource
+        [realestate] with id [thisIsNotAValidId] not found.</message></message>
     http_version:
-  recorded_at: Tue, 11 Jun 2019 10:00:00 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Wed, 07 Aug 2019 14:43:53 GMT
+recorded_with: VCR 4.0.0
