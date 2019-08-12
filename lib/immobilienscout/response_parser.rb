@@ -10,12 +10,6 @@ module Immobilienscout
       raise ArgumentError unless valid?
     end
 
-    def call
-      response_body = assign_response_body
-
-      Message.new(success?, code, messages(response_body), id(response_body))
-    end
-
     private
 
     def valid?

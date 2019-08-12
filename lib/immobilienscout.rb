@@ -8,6 +8,8 @@ require 'immobilienscout/api/property'
 require 'immobilienscout/api/attachment'
 require 'immobilienscout/api/report'
 require 'immobilienscout/errors/invalid_request'
+require 'immobilienscout/parsers/json'
+require 'immobilienscout/parsers/xml'
 
 module Immobilienscout
   class << self

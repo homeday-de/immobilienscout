@@ -11,17 +11,36 @@ RSpec.describe Immobilienscout::API::Report, type: :model do
   end
 
   describe '#retrieve' do
-    context 'when request is successful' do
+    context 'when date is the same' do
+      context 'when request is successful' do
+        let!(:is24_id) { '315270728' }
+
+        it 'returns created' do
+          VCR.use_cassette('scout_report_generated_successfuly') do
+            response = described_class.retrieve(is24_id, Date.today, Date.today)
+
+            expect(response.code).to eq '200'
+            expect(response.messages).to eq({"dailyReports"=>{"objectNumber"=>"S3W0UP6C", "reportDailyData"=>[{"date"=>"2019-06-11", "matchesResultList"=>0,
+              "displaysResultList"=>0, "exposeHits"=>0, "onShortList"=>0, "clicksHomepage"=>0, "emailContacts"=>0, "clicksSendUrl"=>0, "clickFocusPlacement"=>0,
+              "showMiniExposeFocusPlacement"=>0, "displayFocusPlacement"=>0}]}})
+          end
+        end
+      end
+    end
+
+    context 'when date is a range' do
       let!(:is24_id) { '315270728' }
 
       it 'returns created' do
-        VCR.use_cassette('scout_report_generated_successfuly') do
-          response = described_class.retrieve(is24_id, Date.today, Date.today)
+        VCR.use_cassette('range_scout_report_generated_successfuly') do
+          response = described_class.retrieve(is24_id, 2.days.ago.to_date, Date.today)
 
           expect(response.code).to eq '200'
-          expect(response.messages).to eq({"dailyReports"=>{"objectNumber"=>"S3W0UP6C", "reportDailyData"=>{"date"=>"2019-06-11", "matchesResultList"=>"0",
-            "displaysResultList"=>"0", "exposeHits"=>"0", "onShortList"=>"0", "clicksHomepage"=>"0", "emailContacts"=>"0", "clicksSendUrl"=>"0", "clickFocusPlacement"=>"0",
-            "showMiniExposeFocusPlacement"=>"0", "displayFocusPlacement"=>"0"}}})
+          expect(response.messages).to eq({"dailyReports"=>{"objectNumber"=>"S3W0UP6C", "reportDailyData"=>[{"date"=>"2019-06-10", "matchesResultList"=>0,
+            "displaysResultList"=>0, "exposeHits"=>0, "onShortList"=>0, "clicksHomepage"=>0, "emailContacts"=>0, "clicksSendUrl"=>0, "clickFocusPlacement"=>0,
+            "showMiniExposeFocusPlacement"=>0, "displayFocusPlacement"=>0}, {"date"=>"2019-06-09", "matchesResultList"=>0,
+              "displaysResultList"=>0, "exposeHits"=>0, "onShortList"=>0, "clicksHomepage"=>0, "emailContacts"=>0, "clicksSendUrl"=>0, "clickFocusPlacement"=>0,
+              "showMiniExposeFocusPlacement"=>0, "displayFocusPlacement"=>0}]}})
         end
       end
     end
@@ -32,8 +51,9 @@ RSpec.describe Immobilienscout::API::Report, type: :model do
 
         it 'returns precondition failed' do
           VCR.use_cassette('date_from_is_bigger_than_date_in_scout_report') do
-            expect { described_class.retrieve(is24_id, Date.today, Date.yesterday) }.to raise_exception(Immobilienscout::Errors::InvalidRequest, 'The parameter [dateFrom = 2019-06-11 dateTo = 2019-06-10] '\
-              'has an invalid value [Negative date range].')
+            expect { described_class.retrieve(is24_id, Date.today, Date.yesterday) }.to raise_exception(
+              Immobilienscout::Errors::InvalidRequest,
+              'The parameter [dateFrom = 2019-06-11 dateTo = 2019-06-10] has an invalid value [Negative date range].')
           end
         end
       end
@@ -53,8 +73,10 @@ RSpec.describe Immobilienscout::API::Report, type: :model do
 
         it 'returns exception' do
           VCR.use_cassette('property_to_create_report_does_not_exist_on_is24') do
-            expect { described_class.retrieve(is24_id, Date.today, Date.today) }.to raise_exception(Immobilienscout::Errors::InvalidRequest, 'Resource [realestate] with id '\
-              '[thisIsNotAValidId] not found.')
+            expect { described_class.retrieve(is24_id, Date.today, Date.today) }.to raise_exception(
+              Immobilienscout::Errors::InvalidRequest,
+              'Resource [realestate] with id [thisIsNotAValidId] not found.'
+            )
           end
         end
       end

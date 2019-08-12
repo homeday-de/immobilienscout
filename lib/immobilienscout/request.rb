@@ -20,7 +20,8 @@ module Immobilienscout
       request.add_field('Authorization', auth_header)
       request.add_field('Accept', 'application/xml')
 
-      execute_request(uri, request)
+      response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) { |http| http.request request }
+      Immobilienscout::Parsers::Xml.new(response).parse
     end
 
     def post
@@ -80,7 +81,7 @@ module Immobilienscout
 
     def execute_request(uri, request)
       response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) { |http| http.request request }
-      Immobilienscout::ResponseParser.new(response).call
+      Immobilienscout::Parsers::Json.new(response).parse
     end
   end
 end

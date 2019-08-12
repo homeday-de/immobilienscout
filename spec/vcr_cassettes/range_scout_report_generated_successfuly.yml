@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/315270728/dailyreport?dateFrom=2019-06-09&dateTo=2019-06-11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      - application/xml
+      User-Agent:
+      - Ruby
+      Host:
+      - rest.sandbox-immobilienscout24.de
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=THDhqSKCuA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560247200,oauth_token=access_token,oauth_version=1.0,dateFrom=2019-06-11,dateTo=2019-06-11,oauth_signature=EAAkOGrMrk6UD83mcg7wqCh6afw%3D
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/xml
+      Content-Length:
+      - '1009'
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 12 Aug 2019 13:10:08 GMT
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 7d8903f06f67c1a6da1a620dece76753.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - TXL51
+      X-Amz-Cf-Id:
+      - VuCU5nieYuqawEikPjnmpitlA_4oBTttOby9x0ByJL4joXpS3XCVUw==
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><dailyReports
+        objectNumber="S3W0UP6C"><reportDailyData><date>2019-06-10</date><matchesResultList>0</matchesResultList><displaysResultList>0</displaysResultList><exposeHits>0</exposeHits><onShortList>0</onShortList><clicksHomepage>0</clicksHomepage><emailContacts>0</emailContacts><clicksSendUrl>0</clicksSendUrl><clickFocusPlacement>0</clickFocusPlacement><showMiniExposeFocusPlacement>0</showMiniExposeFocusPlacement><displayFocusPlacement>0</displayFocusPlacement></reportDailyData><reportDailyData><date>2019-06-09</date><matchesResultList>0</matchesResultList><displaysResultList>0</displaysResultList><exposeHits>0</exposeHits><onShortList>0</onShortList><clicksHomepage>0</clicksHomepage><emailContacts>0</emailContacts><clicksSendUrl>0</clicksSendUrl><clickFocusPlacement>0</clickFocusPlacement><showMiniExposeFocusPlacement>0</showMiniExposeFocusPlacement><displayFocusPlacement>0</displayFocusPlacement></reportDailyData></dailyReports>
+    http_version:
+  recorded_at: Mon, 12 Aug 2019 13:10:08 GMT
+recorded_with: VCR 4.0.0
