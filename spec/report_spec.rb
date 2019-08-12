@@ -11,7 +11,7 @@ RSpec.describe Immobilienscout::API::Report, type: :model do
   end
 
   describe '#retrieve' do
-    context 'when date is the same' do
+    context 'when dates are the same' do
       context 'when request is successful' do
         let!(:is24_id) { '315270728' }
 
@@ -28,7 +28,7 @@ RSpec.describe Immobilienscout::API::Report, type: :model do
       end
     end
 
-    context 'when date is a range' do
+    context 'when dates are a range' do
       let!(:is24_id) { '315270728' }
 
       it 'returns created' do

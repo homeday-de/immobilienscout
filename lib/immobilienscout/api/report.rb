@@ -33,18 +33,18 @@ module Immobilienscout
         end
 
         def place_report_daily_data_in_array(parsed_response)
-          report_daily_data = parsed_response.messages["dailyReports"]["reportDailyData"]
+          report_daily_data = parsed_response.messages['dailyReports']['reportDailyData']
 
           if report_daily_data.is_a? Hash
-          parsed_response.messages["dailyReports"]["reportDailyData"] = [report_daily_data]
+          parsed_response.messages['dailyReports']['reportDailyData'] = [report_daily_data]
           end
 
           parsed_response
         end
 
         def convert_numers_from_string_to_integers(parsed_response)
-          parsed_response.messages["dailyReports"]["reportDailyData"].map do |hash|
-            hash.except("date").map do |key, value|
+          parsed_response.messages['dailyReports']['reportDailyData'].map do |hash|
+            hash.except('date').map do |key, value|
               hash[key] = value.to_i
             end
           end

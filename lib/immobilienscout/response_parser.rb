@@ -38,11 +38,5 @@ module Immobilienscout
       messages = response_body['common.messages'].first['message']
       messages['id'] if messages.is_a? Hash
     end
-
-    def assign_response_body
-      JSON.parse(@response.body)
-    rescue JSON::ParserError
-      JSON.parse(Hash.from_xml(@response.body).to_json)
-    end
   end
 end
