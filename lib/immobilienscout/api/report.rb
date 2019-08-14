@@ -15,7 +15,7 @@ module Immobilienscout
 
         def execute_get_request(url, query_params)
           parsed_response = Immobilienscout::Request.new(url, query_params).get
-          raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages) unless parsed_response.success?
+          raise Immobilienscout::Errors::InvalidRequest, Array.wrap(parsed_response.messages['message']) unless parsed_response.success?
 
           parsed_response
         end

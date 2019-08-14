@@ -21,35 +21,23 @@ http_interactions:
       Content-Type:
       - application/json;charset=UTF-8
       Content-Length:
-      - '150'
+      - '115'
       Connection:
       - keep-alive
-      Cache-Control:
-      - private
-      Expires:
-      - Thu, 01 Jan 1970 00:00:00 GMT
-      L-Is24-Requestrefnum:
-      - 71b0115c-cba8-473c-beef-2c9d935a4f1b
-      L-Is24-Apiclient:
-      - 'consumer_key'
-      L-Is24-Causerid:
-      - '117533741'
-      L-Is24-Resourceid:
-      - thisIsNotAValidId
       Date:
-      - Tue, 11 Jun 2019 12:29:28 GMT
-      Server:
-      - Apache
+      - Wed, 14 Aug 2019 13:31:55 GMT
       X-Cache:
       - Error from cloudfront
       Via:
-      - 1.1 33be852abb39a8e95242a0c764cdc483.cloudfront.net (CloudFront)
+      - 1.1 27b16a0c069e2a271545e30400f5a415.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - TXL51
       X-Amz-Cf-Id:
-      - BNcwe7-sLojHGlldoakTAbMUIwGv-1-MTCDL7JEcQvdbza6IhknE7Q==
+      - 0xSwwah6DI9R5ChgowQZimO2xdC7MxOL9V4eT7aLVAgAe7Z_PfQwpg==
     body:
       encoding: UTF-8
-      string: '{"common.messages":[{"message":{"messageCode":"ERROR_RESOURCE_NOT_FOUND","message":"Resource
-        [realestate] with id [thisIsNotAValidId] not found. "}}]}'
+      string: '{"messageCode":"ERROR_RESOURCE_NOT_FOUND","message":"Resource [realestate]
+        with id [thisIsNotAValidId] not found."}'
     http_version:
-  recorded_at: Tue, 11 Jun 2019 10:00:00 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Wed, 14 Aug 2019 13:31:55 GMT
+recorded_with: VCR 4.0.0
