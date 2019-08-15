@@ -5,7 +5,7 @@ require 'immobilienscout/version'
 Gem::Specification.new do |spec|
   spec.name          = 'immobilienscout'
   spec.version       = Immobilienscout::VERSION
-  spec.authors       = ['Homeday']
+  spec.authors       = ['Homeday GmbH']
   spec.email         = ['backend-team@homeday.de']
 
   spec.summary       = 'A ruby gem to handle Immobilienscout API'
@@ -29,8 +29,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'json'
   spec.add_dependency 'multipart-post'
   spec.add_dependency 'activesupport'
-  spec.add_development_dependency 'webmock', '~> 3.6'
   spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'rake', '~> 12.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'byebug', '~> 9.0'
+  spec.add_development_dependency 'timecop', '~> 0.8.1'
+  spec.add_development_dependency 'vcr', '~> 5.0'
+  spec.add_development_dependency 'webmock', '~> 3.6'
 end

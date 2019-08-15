@@ -22,11 +22,7 @@ require 'webmock/rspec'
 WebMock.disable_net_connect!(allow_localhost: true)
 
 require 'vcr'
-
 require 'support/vcr_setup'
-require 'dotenv'
-Dotenv.load
-
 require 'immobilienscout'
 require 'timecop'
 
@@ -61,10 +57,10 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-  config.after :all do
-    Timecop.return
+  config.before(:suite) do
+    Timecop.safe_mode = true
   end
-  
+
   # VCR cassetes config
   VCR.configure do |config|
     config.cassette_library_dir = 'spec/vcr_cassettes'
