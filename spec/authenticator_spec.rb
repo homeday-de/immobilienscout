@@ -11,7 +11,7 @@ RSpec.describe Immobilienscout::Authenticator, type: :model do
           allow(Immobilienscout).to receive(:configuration).and_return(configuration_double)
           allow(service).to receive('random_bytes').and_return('=\x9D\xE9\xD2\x1E\xF1\xD5')
 
-          Timecop.freeze('2019-01-21 12:00:00 CEST +02:00') do
+          Timecop.freeze('2019-01-21 12:00:00 +0200') do
             response = service.call
 
             expect(response).to eq('OAuth oauth_consumer_key=consumer_key,oauth_nonce=PVx4OURceEU5XHhEMlx4MUVceEYxXHhENQ,oauth_signature_method=HMAC-SHA1,'\
