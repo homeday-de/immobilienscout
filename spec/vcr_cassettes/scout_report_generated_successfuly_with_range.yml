@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/315270728/dailyreport?dateFrom=2019-06-09&dateTo=2019-06-11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=THDhqSKCuA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560247200,oauth_token=access_token,oauth_version=1.0,dateFrom=2019-06-09,dateTo=2019-06-11,oauth_signature=EAAkOGrMrk6UD83mcg7wqCh6afw%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '524'
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 14 Aug 2019 13:31:54 GMT
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 c53e057b6a5ef86fdf09ac1341f7b843.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - TXL51
+      X-Amz-Cf-Id:
+      - tqdSKE2Inj7movDnGGzOETBfK98ZJkKMxJh4FrS--qW5WXrH1cYSMQ==
+    body:
+      encoding: UTF-8
+      string: '{"realEstateId":"S3W0UP6C","dailyReports":[{"date":"2019-06-10","matchesResultList":776,"displaysResultList":166,"exposeHits":7,"onShortList":0,"clicksHomepage":0,"emailContacts":0,"clicksSendUrl":0,"clickFocusPlacement":0,"showMiniExposeFocusPlacement":0,"displayFocusPlacement":0},{"date":"2019-06-11","matchesResultList":766,"displaysResultList":116,"exposeHits":5,"onShortList":0,"clicksHomepage":0,"emailContacts":0,"clicksSendUrl":0,"clickFocusPlacement":0,"showMiniExposeFocusPlacement":0,"displayFocusPlacement":0}]}'
+    http_version:
+  recorded_at: Wed, 14 Aug 2019 13:31:54 GMT
+recorded_with: VCR 4.0.0

@@ -12,16 +12,48 @@ RSpec.describe Immobilienscout::API::Report, type: :model do
 
   describe '#retrieve' do
     context 'when request is successful' do
-      let!(:is24_id) { '315270728' }
+      context 'when dates are the same' do
+        let!(:is24_id) { '315270728' }
 
-      it 'returns created' do
-        VCR.use_cassette('scout_report_generated_successfuly') do
-          response = described_class.retrieve(is24_id, Date.today, Date.today)
+        it 'returns created' do
+          VCR.use_cassette('scout_report_generated_successfuly_with_same_date') do
+            response = described_class.retrieve(is24_id, Date.today, Date.today)
 
-          expect(response.code).to eq '200'
-          expect(response.messages).to eq({"dailyReports"=>{"@objectNumber"=>"S3W0UP6C", "reportDailyData"=>[{"date"=>"2019-06-11", "matchesResultList"=>0,
-            "displaysResultList"=>0, "exposeHits"=>0, "onShortList"=>0, "clicksHomepage"=>0, "emailContacts"=>0, "clicksSendUrl"=>0, "clickFocusPlacement"=>0,
-            "showMiniExposeFocusPlacement"=>0, "displayFocusPlacement"=>0}]}})
+            expect(response.code).to eq '200'
+            expect(response.messages).to eq({"dailyReports"=>[{"date"=>"2019-06-11", "matchesResultList"=>766,
+              "displaysResultList"=>116, "exposeHits"=>5, "onShortList"=>0, "clicksHomepage"=>0, "emailContacts"=>0, "clicksSendUrl"=>0, "clickFocusPlacement"=>0,
+              "showMiniExposeFocusPlacement"=>0, "displayFocusPlacement"=>0}], "realEstateId"=>"S3W0UP6C"})
+          end
+        end
+      end
+
+      context 'when dates are a range' do
+        let!(:is24_id) { '315270728' }
+
+        it 'returns created' do
+          VCR.use_cassette('scout_report_generated_successfuly_with_range') do
+            response = described_class.retrieve(is24_id, 2.days.ago.to_date, Date.today)
+
+            expect(response.code).to eq '200'
+            expect(response.messages).to eq({"dailyReports"=>[{"date"=>"2019-06-10", "matchesResultList"=>776,
+              "displaysResultList"=>166, "exposeHits"=>7, "onShortList"=>0, "clicksHomepage"=>0, "emailContacts"=>0, "clicksSendUrl"=>0, "clickFocusPlacement"=>0,
+              "showMiniExposeFocusPlacement"=>0, "displayFocusPlacement"=>0}, {"date"=>"2019-06-11", "matchesResultList"=>766,
+              "displaysResultList"=>116, "exposeHits"=>5, "onShortList"=>0, "clicksHomepage"=>0, "emailContacts"=>0, "clicksSendUrl"=>0, "clickFocusPlacement"=>0,
+              "showMiniExposeFocusPlacement"=>0, "displayFocusPlacement"=>0}], "realEstateId"=>"S3W0UP6C"})
+          end
+        end
+      end
+
+      context 'when dates does not have data' do
+        let!(:is24_id) { '112715859' }
+
+        it 'returns created' do
+          VCR.use_cassette('scout_report_generated_successfuly_with_no_data') do
+            response = described_class.retrieve(is24_id, Date.today, Date.today)
+
+            expect(response.code).to eq '200'
+            expect(response.messages).to eq({"dailyReports"=>[], "realEstateId"=>"22AOIMOP"})
+          end
         end
       end
     end

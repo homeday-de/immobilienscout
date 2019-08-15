@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/112715859/dailyreport?dateFrom=2019-06-11&dateTo=2019-06-11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=THDhqSKCuA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560247200,oauth_token=access_token,oauth_version=1.0,dateFrom=2019-06-11,dateTo=2019-06-11,oauth_signature=EAAkOGrMrk6UD83mcg7wqCh6afw%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 14 Aug 2019 13:39:40 GMT
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 a3dc4a768d48247641f8ad7f08326d38.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - TXL52-C1
+      X-Amz-Cf-Id:
+      - vh--RL61_dp0sE22IcCHaLs1oogEezLg_waWRA2aEV1iHPUVYusVag==
+    body:
+      encoding: UTF-8
+      string: '{"realEstateId":"22AOIMOP","dailyReports":[]}'
+    http_version:
+  recorded_at: Wed, 14 Aug 2019 13:39:40 GMT
+recorded_with: VCR 4.0.0
