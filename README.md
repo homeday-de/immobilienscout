@@ -1,5 +1,9 @@
 # Immobilienscout gem
 
+[![Build Status](https://travis-ci.com/homeday-de/immobilienscout.svg?branch=master)](https://travis-ci.com/homeday-de/immobilienscout)
+[![Gem Version](https://badge.fury.io/rb/immobilienscout.svg)](https://badge.fury.io/rb/immobilienscout)
+[![GitHub license](https://img.shields.io/github/license/homeday-de/immobilienscout)](https://github.com/homeday-de/immobilienscout/blob/master/LICENSE.txt)
+
 This is an interface for Immobilienscout API
 
 ## Example
