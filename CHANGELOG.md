@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.0.4] - 2019-10-17
 Adding endpoint to update order of attachments for a specific property
 
 ## [0.0.3] - 2019-08-15
