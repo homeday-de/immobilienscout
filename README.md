@@ -43,6 +43,11 @@ Immobilienscout::API::Property.destroy(is24_id)
 Immobilienscout::API::Attachment.add(is24_id, binary_file, {metadata})
 ```
 
+ - Order attachments for a specific property
+```ruby
+Immobilienscout::API::Attachment.put_order(is24_id, {params})
+```
+
 #### Report
 - Get scout report
 ```ruby

@@ -15,6 +15,15 @@ module Immobilienscout
           parsed_response
         end
 
+        def put_order(is24_id, params)
+          raise ArgumentError unless params.present?
+
+          parsed_response = Immobilienscout::Request.new(put_order_url(is24_id), params).put
+          raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages) unless parsed_response.success?
+
+          parsed_response
+        end
+
         private
 
         def create_metadata_file(params)
@@ -24,6 +33,10 @@ module Immobilienscout
 
         def add_url(is24_id)
           "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}/attachment"
+        end
+
+        def put_order_url(is24_id)
+          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}/attachment/attachmentsorder"
         end
       end
     end

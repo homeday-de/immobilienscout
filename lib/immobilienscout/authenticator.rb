@@ -2,7 +2,7 @@ require 'open-uri'
 
 module Immobilienscout
   class Authenticator
-    ALLOWED_METHODS = %w(POST GET DELETE).freeze
+    ALLOWED_METHODS = %w(POST GET DELETE PUT).freeze
     OAUTH_SIGNATURE_METHOD = 'HMAC-SHA1'.freeze
     OAUTH_VERSION = '1.0'.freeze
     HASH_DIGEST = 'sha1'.freeze
