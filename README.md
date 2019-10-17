@@ -45,7 +45,7 @@ Immobilienscout::API::Attachment.add(is24_id, binary_file, {metadata})
 
  - Order attachments for a specific property
 ```ruby
-Immobilienscout::API::Attachment.order(is24_id, {params})
+Immobilienscout::API::Attachment.put_order(is24_id, {params})
 ```
 
 #### Report

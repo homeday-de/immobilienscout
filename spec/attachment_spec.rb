@@ -38,7 +38,7 @@ RSpec.describe Immobilienscout::API::Attachment, type: :class do
     end
   end
 
-  describe '#order' do
+  describe '#put_order' do
     context 'when request is successful' do
       let(:params_with_ids) do
         {
@@ -62,8 +62,8 @@ RSpec.describe Immobilienscout::API::Attachment, type: :class do
       end
 
       it 'returns success' do
-        VCR.use_cassette('attachments_are_successfuly_ordered_is24') do
-          response = described_class.order('315523568', params_with_ids)
+        VCR.use_cassette('attachments_are_successfully_ordered_is24') do
+          response = described_class.put_order('315523568', params_with_ids)
 
           expect(response.code).to eq '200'
           expect(response.messages.count).to eq 1
@@ -77,13 +77,13 @@ RSpec.describe Immobilienscout::API::Attachment, type: :class do
     context 'when request is unsuccessful' do
       context 'when mandatory params for immobilienscout24 are not present' do
         it 'returns Argument Error' do
-          expect { described_class.order('315523568', {}) }.to raise_exception(ArgumentError)
+          expect { described_class.put_order('315523568', {}) }.to raise_exception(ArgumentError)
         end
       end
 
-      context 'when mandatory params for order method are not present' do
+      context 'when mandatory params for put_order method are not present' do
         it 'returns Argument Error' do
-          expect { described_class.order }.to raise_exception(ArgumentError)
+          expect { described_class.put_order }.to raise_exception(ArgumentError)
         end
       end
     end
