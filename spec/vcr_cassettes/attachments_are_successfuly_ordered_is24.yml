@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/315523568/attachment/attachmentsorder
+    body:
+      encoding: UTF-8
+      string: '{"attachmentsorder.attachmentsorder":{"@xmlns":{"attachmentsorder":"http://rest.immobilienscout24.de/schema/attachmentsorder/1.0"},"attachmentId":["896939747","896939746","896939748","896939750","896939751","896939749","896939745"]}}'
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=LYiEWxQUuA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560263360,oauth_token=access_token,oauth_version=1.0,oauth_signature=DZd9mD1Esy87NVjfJbDiA%2Fc5FTA%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '165'
+      Connection:
+      - keep-alive
+      Date:
+      - Wed, 16 Oct 2019 11:41:47 GMT
+      L-Is24-Requestrefnum:
+      - 9d53bf14-1b92-4327-8e77-42617642bfa2
+      L-Is24-Apiclient:
+      - '08005161Key'
+      L-Is24-Causerid:
+      - '117533741'
+      L-Is24-Resourceid:
+      - '315523568'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 3987a119dd762046470f5ba503a917ea.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - TXL52-C1
+      X-Amz-Cf-Id:
+      - 3Cz5E3xJFA9W3tVXIttGYfvw6G0JM3g9CDhLjujnYv69tn5m2k1BrA==
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"MESSAGE_RESOURCE_UPDATED","message":"Resource
+        [realestate] with id [315523568] has been updated.","id":"315523568"}}]}'
+    http_version:
+  recorded_at: Wed, 16 Oct 2019 11:41:47 GMT
+recorded_with: VCR 5.0.0

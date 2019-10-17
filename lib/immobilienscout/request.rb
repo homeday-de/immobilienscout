@@ -48,6 +48,19 @@ module Immobilienscout
       execute_request(uri, request)
     end
 
+    def put
+      auth_header = generate_auth_header('PUT')
+      headers = generate_headers(auth_header)
+
+      uri = URI.parse(@url)
+
+      request = Net::HTTP::Put.new(uri)
+      request.body = @params.to_json
+      request.initialize_http_header(headers)
+
+      execute_request(uri, request)
+    end
+
     def delete
       auth_header = generate_auth_header('DELETE')
       headers = generate_headers(auth_header)
