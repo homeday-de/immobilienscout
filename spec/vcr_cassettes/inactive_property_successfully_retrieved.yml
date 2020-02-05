@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/315661713
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=myHomedayKey,oauth_nonce=wRNhJLAsIA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1580834888,oauth_token=f7677b9c-c52a-4101-b736-26e8f0e4e898,oauth_version=1.0,oauth_signature=xyzvpwVwMNwXCzZBVDKKKtbWJ8s%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2537'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 04 Feb 2020 16:48:09 GMT
+      L-Is24-Requestrefnum:
+      - 7ee40cbc-bbe3-4da6-bed4-21fa175e1573
+      L-Is24-Apiclient:
+      - myHomedayKey
+      L-Is24-Causerid:
+      - '121920857'
+      L-Is24-Resourceid:
+      - '315661713'
+      Etag:
+      - '"0bc535026a762b1cfd5c9cf165bb977f9"'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 ffa01f5c992a803f4470401daea2d541.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - TXL52-C1
+      X-Amz-Cf-Id:
+      - e9sxHpTJQ6RYNxlV7SWI_PsIJ38e6dKwJXO9aPmi-Hl15t71rym1XQ==
+    body:
+      encoding: UTF-8
+      string: '{"realestates.apartmentBuy":{"@id":"315661713","externalId":"extID123INACTIVE","title":"RestAPi
+        appartmentBuy","creationDate":"2020-02-04T16:03:18.569Z","address":{"street":"Andreasstraße","houseNumber":"10","postcode":"10243","city":"Berlin","wgs84Coordinate":{"latitude":52.51245,"longitude":13.43134},"geoHierarchy":{"continent":{"geoCodeId":1,"fullGeoCodeId":"1"},"country":{"geoCodeId":276,"fullGeoCodeId":"1276"},"region":{"geoCodeId":3,"fullGeoCodeId":"1276003"},"city":{"geoCodeId":1,"fullGeoCodeId":"1276003001"},"quarter":{"geoCodeId":17,"fullGeoCodeId":"1276003001017"},"neighbourhood":{"geoCodeId":11000000002348}}},"apiSearchData":{"searchField1":"apiSearchField1","searchField2":"apiSearchField2","searchField3":"apiSearchField3"},"realEstateState":"INACTIVE","descriptionNote":"Objektbeschreibung(noch
+        2000 Zeichen) description-note \\n after line break this text is in the next
+        row","furnishingNote":"Ausstattung(noch 2000 Zeichen)","locationNote":"Lage(noch
+        2000 Zeichen)","otherNote":"Sonstiges(noch 2000 Zeichen)","attachments":[{"@xlink.href":"https:\/\/rest.sandbox-immobilienscout24.de\/restapi\/api\/offer\/v1.0\/user\/me\/realestate\/315661713\/attachment"}],"showAddress":"true","contact":{"@id":"96701088"},"common.publishChannels":[],"apartmentType":"MAISONETTE","floor":2,"lift":"true","energyCertificate":{"energyCertificateAvailability":"AVAILABLE","energyCertificateCreationDate":"BEFORE_01_MAY_2014"},"cellar":"YES","handicappedAccessible":"YES","numberOfParkingSpaces":1,"condition":"WELL_KEPT","lastRefurbishment":2010,"interiorQuality":"SOPHISTICATED","constructionYear":1995,"freeFrom":"sofort","heatingTypeEnev2014":"FLOOR_HEATING","firingTypes":[{"firingType":"NO_INFORMATION"}],"energySourcesEnev2014":{"energySourceEnev2014":"WOOD_CHIPS"},"buildingEnergyRatingType":"ENERGY_CONSUMPTION","thermalCharacteristic":123.85,"energyConsumptionContainsWarmWater":"YES","numberOfFloors":5,"usableFloorSpace":70,"numberOfBedRooms":1,"numberOfBathRooms":2,"guestToilet":"YES","parkingSpaceType":"UNDERGROUND_GARAGE","rented":"YES","rentalIncome":895,"listed":"YES","parkingSpacePrice":15000,"summerResidencePractical":"YES","price":{"value":175000,"currency":"EUR","marketingType":"PURCHASE","priceIntervalType":"ONE_TIME_CHARGE"},"livingSpace":75,"numberOfRooms":3,"energyPerformanceCertificate":"true","builtInKitchen":"true","balcony":"true","garden":"true","courtage":{"hasCourtage":"YES","courtage":"Provisionshöhe
+        (brutto)","courtageNote":"Provisionshinweis (noch 500 Zeichen)"},"serviceCharge":575}}'
+    http_version: 
+  recorded_at: Tue, 04 Feb 2020 16:48:09 GMT
+recorded_with: VCR 5.0.0

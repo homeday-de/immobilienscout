@@ -150,4 +150,42 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
       end
     end
   end
+
+  describe '#show' do
+    context 'when object exists and is active' do
+      it 'returns the resource' do
+        VCR.use_cassette('active_property_successfully_retrieved', decode_compressed_response: true) do
+          parsed_response = described_class.show('315661708')
+          expect(parsed_response.is_a?(Struct)).to eq true
+          expect(parsed_response.success?).to eq true
+          expect(parsed_response.code).to eq '200'
+          expect(parsed_response.messages['realestates.apartmentBuy']['@id']).to eq('315661708')
+          expect(parsed_response.messages['realestates.apartmentBuy']['externalId']).to eq('extID123')
+        end
+      end
+    end
+
+    context 'when object exists and is in-active' do
+      it 'returns the resource' do
+        VCR.use_cassette('inactive_property_successfully_retrieved') do
+          parsed_response = described_class.show('315661713')
+          expect(parsed_response.is_a?(Struct)).to eq true
+          expect(parsed_response.success?).to eq true
+          expect(parsed_response.code).to eq '200'
+          expect(parsed_response.messages['realestates.apartmentBuy']['@id']).to eq('315661713')
+          expect(parsed_response.messages['realestates.apartmentBuy']['externalId']).to eq('extID123INACTIVE')
+        end
+      end
+    end
+
+    context 'when object does not exist' do
+      it 'returns the resource' do
+        VCR.use_cassette('property_to_show_does_not_exist') do
+          expect { described_class.show('000000000') }.to raise_exception(Immobilienscout::Errors::InvalidRequest) { |exception|
+            expect(exception.message).to eq('["Resource was not found."]')
+          }
+        end
+      end
+    end
+  end
 end
