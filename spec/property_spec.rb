@@ -161,6 +161,7 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
           expect(parsed_response.code).to eq '200'
           expect(parsed_response.messages['realestates.apartmentBuy']['@id']).to eq('315661708')
           expect(parsed_response.messages['realestates.apartmentBuy']['externalId']).to eq('extID123')
+          expect(parsed_response.messages['realestates.apartmentBuy']['realEstateState']).to eq('ACTIVE')
         end
       end
     end
@@ -174,6 +175,7 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
           expect(parsed_response.code).to eq '200'
           expect(parsed_response.messages['realestates.apartmentBuy']['@id']).to eq('315661713')
           expect(parsed_response.messages['realestates.apartmentBuy']['externalId']).to eq('extID123INACTIVE')
+          expect(parsed_response.messages['realestates.apartmentBuy']['realEstateState']).to eq('INACTIVE')
         end
       end
     end
