@@ -64,6 +64,9 @@ RSpec.configure do |config|
   # VCR cassetes config
   VCR.configure do |config|
     config.cassette_library_dir = 'spec/vcr_cassettes'
+    config.before_record do |i|
+      i.response.body.force_encoding('UTF-8')
+    end
     config.hook_into :webmock
     config.ignore_localhost = true
   end

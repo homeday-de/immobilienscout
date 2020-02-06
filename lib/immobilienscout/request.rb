@@ -3,7 +3,7 @@ require 'uri'
 
 module Immobilienscout
   class Request
-    def initialize(url, params = nil)
+    def initialize(url, params = {})
       @url = url
       @params = params
 

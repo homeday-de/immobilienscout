@@ -37,6 +37,11 @@ Immobilienscout::API::Property.publish({params})
 Immobilienscout::API::Property.destroy(is24_id)
 ```
 
+- Show property
+```ruby
+Immobilienscout::API::Property.show(is24_id)
+```
+
 #### Attachment
  - Add attachments to property
 ```ruby
