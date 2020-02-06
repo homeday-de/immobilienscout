@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - OAuth oauth_consumer_key=***REMOVED***,oauth_nonce=***REMOVED***,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1580918888,oauth_token=***REMOVED***,oauth_version=1.0,oauth_signature=***REMOVED***
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=N3n0wv29nA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1552567704,oauth_token=access_token,oauth_version=1.0,oauth_signature=QfZ9ai8yNS15aJpmej90VmFgtwY%3D
       Content-Type:
       - application/json
       Accept:
@@ -29,7 +29,7 @@ http_interactions:
       L-Is24-Requestrefnum:
       - cb63b17d-ffd9-4c7e-8afc-ab221cad1904
       L-Is24-Apiclient:
-      - ***REMOVED***
+      - consumer_key
       L-Is24-Causerid:
       - '121920857'
       L-Is24-Resourceid:
@@ -46,6 +46,6 @@ http_interactions:
       encoding: UTF-8
       string: '{"common.messages":[{"message":{"messageCode":"ERROR_RESOURCE_NOT_FOUND","message":"Resource
         was not found."}}]}'
-    http_version: 
+    http_version:
   recorded_at: Wed, 05 Feb 2020 16:08:08 GMT
 recorded_with: VCR 5.0.0
