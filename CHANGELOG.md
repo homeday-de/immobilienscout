@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.0.5] - 2020-02-06
+Adding show endpoint to retrieve a single property
+
 ## [0.0.4] - 2019-10-17
 Adding endpoint to update order of attachments for a specific property
 
