@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/315676289
+    body:
+      encoding: UTF-8
+      string: '{"realestates.apartmentBuy":{"externalId":"extID1234"}}'
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=MoDCGe4wtg,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1582018863,oauth_token=access_token,oauth_version=1.0,oauth_signature=PUG5tJbuiiD%2B6WcMOQ1qjnfS6iA%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 412
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '227'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 18 Feb 2020 09:41:07 GMT
+      L-Is24-Requestrefnum:
+      - 2329cb48-8272-404f-b2f3-713ac305bf56
+      L-Is24-Apiclient:
+      - consumer_key
+      L-Is24-Causerid:
+      - '121920857'
+      L-Is24-Resourceid:
+      - '315676289'
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 413f39d80df4c73f533f149070776a51.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - MAN50-C1
+      X-Amz-Cf-Id:
+      - 4OrBfv836Sr35HrIRgKD05MhKNolvsUmurZ56hZkUe-GqY79s93udw==
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"ERROR_RESOURCE_VALIDATION","message":"Error
+        while validating input for the resource. [MESSAGE: Given RealEstate external
+        ID (extID1234) does not match existing one (HH73I0QJ)]"}}]}'
+    http_version:
+  recorded_at: Tue, 18 Feb 2020 09:41:04 GMT
+recorded_with: VCR 5.0.0
