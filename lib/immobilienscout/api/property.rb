@@ -8,6 +8,14 @@ module Immobilienscout
           execute_post_request(create_url, params)
         end
 
+        def update(is24_id, params)
+          raise ArgumentError unless params.present?
+
+          update_url = update_url(is24_id)
+
+          execute_put_request(update_url, params)
+        end
+
         def publish(params)
           raise ArgumentError unless params.present?
 
@@ -39,6 +47,13 @@ module Immobilienscout
           parsed_response
         end
 
+        def execute_put_request(url, params)
+          parsed_response = Immobilienscout::Request.new(url, params).put
+          raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages) unless parsed_response.success?
+
+          parsed_response
+        end
+
         def execute_delete_request(url)
           parsed_response = Immobilienscout::Request.new(url).delete
           raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages) unless parsed_response.success?
@@ -55,6 +70,10 @@ module Immobilienscout
 
         def create_url
           "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate"
+        end
+
+        def update_url(is24_id)
+          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}"
         end
 
         def publish_url
