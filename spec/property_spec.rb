@@ -59,6 +59,69 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
     end
   end
 
+  describe '#update' do
+    let!(:update_id) { '315676289' }
+    let!(:update_ext_id) { 'HH73I0QJ' }
+    let!(:update_params) { {'realestates.apartmentBuy':{'@id':'315676289','externalId':'HH73I0QJ','title':'Updated Title','address':{'street':'Updated Street','houseNumber':'12','postcode':'26382','city':'Wilhelmshaven','wgs84Coordinate':{'latitude':53.5212436,'longitude':8.1049089},'geoHierarchy':{'continent':{'geoCodeId':1,'fullGeoCodeId':'1'},'country':{'geoCodeId':276,'fullGeoCodeId':'1276'},'region':{'geoCodeId':9,'fullGeoCodeId':'1276009'},'city':{'geoCodeId':44,'fullGeoCodeId':'1276009044'},'quarter':{'geoCodeId':6,'fullGeoCodeId':'1276009044006'},'neighbourhood':{'geoCodeId':3405000000170}}},'realEstateState':'ACTIVE','descriptionNote':'New Description','locationNote':'New Location','showAddress':'false','contact':{'@id':'96701088'},'apartmentType':'APARTMENT','floor':1,'lift':'false','energyCertificate':{'energyCertificateAvailability':'AVAILABLE','energyCertificateCreationDate':'FROM_01_MAY_2014','energyEfficiencyClass':'G'},'cellar':'YES','handicappedAccessible':'NOT_APPLICABLE','numberOfParkingSpaces':0,'condition':'WELL_KEPT','interiorQuality':'NORMAL','constructionYear':1902,'heatingType':'SELF_CONTAINED_CENTRAL_HEATING','heatingTypeEnev2014':'SELF_CONTAINED_CENTRAL_HEATING','firingTypes':[{'firingType':'GAS'}],'energySourcesEnev2014':{'energySourceEnev2014':'GAS'},'buildingEnergyRatingType':'ENERGY_REQUIRED','thermalCharacteristic':217.5,'energyConsumptionContainsWarmWater':'NOT_APPLICABLE','numberOfFloors':3,'numberOfBedRooms':2,'numberOfBathRooms':1,'guestToilet':'NOT_APPLICABLE','rented':'YES','rentalIncome':365,'listed':'NOT_APPLICABLE','parkingSpacePrice':0,'summerResidencePractical':'NOT_APPLICABLE','price':{'value':200000,'currency':'EUR','marketingType':'PURCHASE','priceIntervalType':'ONE_TIME_CHARGE'},'livingSpace':66.93,'numberOfRooms':4,'energyPerformanceCertificate':'true','builtInKitchen':'false','balcony':'false','garden':'false','courtage':{'hasCourtage':'YES','courtage':'4,75% vom Kaufpreis inkl. 19% MwSt.'},'serviceCharge':132}} }
+
+    context 'when request is successful' do
+      it 'returns updated' do
+        VCR.use_cassette('property_successfuly_updated_is24', record: :once) do
+          parsed_response = described_class.update(update_id, update_params)
+          expect(parsed_response.is_a?(Struct)).to eq true
+          expect(parsed_response.success?).to eq true
+          expect(parsed_response.code).to eq '200'
+          expect(parsed_response.messages.count).to eq 1
+          expect(parsed_response.messages.first.code).to eq 'MESSAGE_RESOURCE_UPDATED'
+          expect(parsed_response.messages.first.messages).to eq "Resource [realestate] with id [#{update_id}] has been updated."
+          expect(parsed_response.messages.first.id).to eq update_id
+        end
+
+        VCR.use_cassette('show_updated_is24', record: :once) do
+          parsed_show_response = described_class.show(update_id)
+          expect(parsed_show_response.is_a?(Struct)).to eq true
+          expect(parsed_show_response.success?).to eq true
+          expect(parsed_show_response.code).to eq '200'
+          expect(parsed_show_response.messages['realestates.apartmentBuy']['realEstateState']).to eq('ACTIVE')
+          expect(parsed_show_response.messages['realestates.apartmentBuy']['title']).to eq('Updated Title')
+          expect(parsed_show_response.messages['realestates.apartmentBuy']['address']['street']).to eq('Updated Street')
+          expect(parsed_show_response.messages['realestates.apartmentBuy']['descriptionNote']).to eq('New Description')
+          expect(parsed_show_response.messages['realestates.apartmentBuy']['price']['value']).to eq(200000)
+        end
+      end
+    end
+
+    context 'when request is unsuccessful' do
+      context 'when all params are present' do
+        context 'the property does not exists' do
+          it 'returns exception invalid request' do
+            VCR.use_cassette('property_to_update_does_not_exists_is24', record: :once) do
+              expect { described_class.update('WrongID', update_params) }.to raise_exception(Immobilienscout::Errors::InvalidRequest)
+            end
+          end
+        end
+      end
+
+      context 'when params are not present' do
+        context 'property has no client param' do
+          it 'returns exception argument error' do
+            expect { described_class.update(update_id, {}) }.to raise_exception(ArgumentError)
+          end
+        end
+
+        context 'post request is missing required params' do
+          let!(:incomplete_update_params) { {'realestates.apartmentBuy':{'externalId':'extID1234'}} }
+
+          it 'returns exception invalid request' do
+            VCR.use_cassette('missing_mandatory_params_to_update_is24', record: :once) do
+              expect { described_class.update(update_id, incomplete_update_params) }.to raise_exception(Immobilienscout::Errors::InvalidRequest)
+            end
+          end
+        end
+      end
+    end
+  end
+
   describe '#publish' do
     context 'when request is successful' do
       let!(:valid_publish_params) do
@@ -154,7 +217,7 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
   describe '#show' do
     context 'when object exists and is active' do
       it 'returns the resource' do
-        VCR.use_cassette('active_property_successfully_retrieved', decode_compressed_response: true) do
+        VCR.use_cassette('active_property_successfully_retrieved') do
           parsed_response = described_class.show('315661708')
           expect(parsed_response.is_a?(Struct)).to eq true
           expect(parsed_response.success?).to eq true

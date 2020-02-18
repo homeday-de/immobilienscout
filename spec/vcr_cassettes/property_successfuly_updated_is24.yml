@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/315676289
+    body:
+      encoding: UTF-8
+      string: '{"realestates.apartmentBuy":{"@id":"315676289","externalId":"HH73I0QJ","title":"Updated
+        Title","address":{"street":"Updated Street","houseNumber":"12","postcode":"26382","city":"Wilhelmshaven","wgs84Coordinate":{"latitude":53.5212436,"longitude":8.1049089},"geoHierarchy":{"continent":{"geoCodeId":1,"fullGeoCodeId":"1"},"country":{"geoCodeId":276,"fullGeoCodeId":"1276"},"region":{"geoCodeId":9,"fullGeoCodeId":"1276009"},"city":{"geoCodeId":44,"fullGeoCodeId":"1276009044"},"quarter":{"geoCodeId":6,"fullGeoCodeId":"1276009044006"},"neighbourhood":{"geoCodeId":3405000000170}}},"realEstateState":"ACTIVE","descriptionNote":"New
+        Description","locationNote":"New Location","showAddress":"false","contact":{"@id":"96701088"},"apartmentType":"APARTMENT","floor":1,"lift":"false","energyCertificate":{"energyCertificateAvailability":"AVAILABLE","energyCertificateCreationDate":"FROM_01_MAY_2014","energyEfficiencyClass":"G"},"cellar":"YES","handicappedAccessible":"NOT_APPLICABLE","numberOfParkingSpaces":0,"condition":"WELL_KEPT","interiorQuality":"NORMAL","constructionYear":1902,"heatingType":"SELF_CONTAINED_CENTRAL_HEATING","heatingTypeEnev2014":"SELF_CONTAINED_CENTRAL_HEATING","firingTypes":[{"firingType":"GAS"}],"energySourcesEnev2014":{"energySourceEnev2014":"GAS"},"buildingEnergyRatingType":"ENERGY_REQUIRED","thermalCharacteristic":217.5,"energyConsumptionContainsWarmWater":"NOT_APPLICABLE","numberOfFloors":3,"numberOfBedRooms":2,"numberOfBathRooms":1,"guestToilet":"NOT_APPLICABLE","rented":"YES","rentalIncome":365,"listed":"NOT_APPLICABLE","parkingSpacePrice":0,"summerResidencePractical":"NOT_APPLICABLE","price":{"value":200000,"currency":"EUR","marketingType":"PURCHASE","priceIntervalType":"ONE_TIME_CHARGE"},"livingSpace":66.93,"numberOfRooms":4,"energyPerformanceCertificate":"true","builtInKitchen":"false","balcony":"false","garden":"false","courtage":{"hasCourtage":"YES","courtage":"4,75%
+        vom Kaufpreis inkl. 19% MwSt."},"serviceCharge":132}}'
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=LJ950ODEIg,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1582019043,oauth_token=access_token,oauth_version=1.0,oauth_signature=pVHYW7jstcDrwKrvweW4ZzWzo2w%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '165'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 18 Feb 2020 09:44:07 GMT
+      L-Is24-Requestrefnum:
+      - 7ccea4d2-ec73-4805-8394-15d9d0a90b82
+      L-Is24-Apiclient:
+      - consumer_key
+      L-Is24-Causerid:
+      - '121920857'
+      L-Is24-Resourceid:
+      - '315676289'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 cba862420ea46057b8ffe4eda3fdb3b6.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - MAN50-C1
+      X-Amz-Cf-Id:
+      - v7EtbhEi6S95VlNgK4LgKdtMdsOP-pKMc74mDIth01UVfsCNcMzERQ==
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"MESSAGE_RESOURCE_UPDATED","message":"Resource
+        [realestate] with id [315676289] has been updated.","id":"315676289"}}]}'
+    http_version:
+  recorded_at: Tue, 18 Feb 2020 09:44:04 GMT
+recorded_with: VCR 5.0.0

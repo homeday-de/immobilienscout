@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/WrongID
+    body:
+      encoding: UTF-8
+      string: '{"realestates.apartmentBuy":{"@id":"315676289","externalId":"HH73I0QJ","title":"Updated
+        Title","address":{"street":"Updated Street","houseNumber":"12","postcode":"26382","city":"Wilhelmshaven","wgs84Coordinate":{"latitude":53.5212436,"longitude":8.1049089},"geoHierarchy":{"continent":{"geoCodeId":1,"fullGeoCodeId":"1"},"country":{"geoCodeId":276,"fullGeoCodeId":"1276"},"region":{"geoCodeId":9,"fullGeoCodeId":"1276009"},"city":{"geoCodeId":44,"fullGeoCodeId":"1276009044"},"quarter":{"geoCodeId":6,"fullGeoCodeId":"1276009044006"},"neighbourhood":{"geoCodeId":3405000000170}}},"realEstateState":"ACTIVE","descriptionNote":"New
+        Description","locationNote":"New Location","showAddress":"false","contact":{"@id":"96701088"},"apartmentType":"APARTMENT","floor":1,"lift":"false","energyCertificate":{"energyCertificateAvailability":"AVAILABLE","energyCertificateCreationDate":"FROM_01_MAY_2014","energyEfficiencyClass":"G"},"cellar":"YES","handicappedAccessible":"NOT_APPLICABLE","numberOfParkingSpaces":0,"condition":"WELL_KEPT","interiorQuality":"NORMAL","constructionYear":1902,"heatingType":"SELF_CONTAINED_CENTRAL_HEATING","heatingTypeEnev2014":"SELF_CONTAINED_CENTRAL_HEATING","firingTypes":[{"firingType":"GAS"}],"energySourcesEnev2014":{"energySourceEnev2014":"GAS"},"buildingEnergyRatingType":"ENERGY_REQUIRED","thermalCharacteristic":217.5,"energyConsumptionContainsWarmWater":"NOT_APPLICABLE","numberOfFloors":3,"numberOfBedRooms":2,"numberOfBathRooms":1,"guestToilet":"NOT_APPLICABLE","rented":"YES","rentalIncome":365,"listed":"NOT_APPLICABLE","parkingSpacePrice":0,"summerResidencePractical":"NOT_APPLICABLE","price":{"value":200000,"currency":"EUR","marketingType":"PURCHASE","priceIntervalType":"ONE_TIME_CHARGE"},"livingSpace":66.93,"numberOfRooms":4,"energyPerformanceCertificate":"true","builtInKitchen":"false","balcony":"false","garden":"false","courtage":{"hasCourtage":"YES","courtage":"4,75%\n      vom
+        Kaufpreis inkl. 19% MwSt."},"serviceCharge":132}}'
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=ZBHDq25iA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1582018862,oauth_token=access_token,oauth_version=1.0,oauth_signature=Tk13s64FUEjzS7vNs9DUddiXcnM%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '112'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 18 Feb 2020 09:41:06 GMT
+      L-Is24-Requestrefnum:
+      - 0f976f24-f836-4caa-a294-19a4ccfccfb5
+      L-Is24-Apiclient:
+      - consumer_key
+      L-Is24-Causerid:
+      - '121920857'
+      L-Is24-Resourceid:
+      - WrongID
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 a364335587d085de3832514f7712e0e0.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - MAN50-C1
+      X-Amz-Cf-Id:
+      - iz2J7K1o_DwDSx9ZaYmINU4OxDh93Yja3YHO6JreMPa-wwQCerKtUQ==
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"ERROR_RESOURCE_NOT_FOUND","message":"Resource
+        was not found."}}]}'
+    http_version:
+  recorded_at: Tue, 18 Feb 2020 09:41:03 GMT
+recorded_with: VCR 5.0.0

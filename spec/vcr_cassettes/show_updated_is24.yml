@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/315676289
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=JbZHjYIDAg,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1582019044,oauth_token=access_token,oauth_version=1.0,oauth_signature=r4oqn%2FDYqs7zJxpdBtGBnYdYntw%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2300'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 18 Feb 2020 09:44:08 GMT
+      L-Is24-Requestrefnum:
+      - 87012b87-4344-424d-a8c6-d4ed4618c1e6
+      L-Is24-Apiclient:
+      - consumer_key
+      L-Is24-Causerid:
+      - '121920857'
+      L-Is24-Resourceid:
+      - '315676289'
+      Etag:
+      - '"0c6b8625c4f19ccc40d585ce42ead76a5"'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 5df88084d2e6c90392a3f4e5a634f39d.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - MAN50-C1
+      X-Amz-Cf-Id:
+      - N2vS35hOYQ_4CAdeHgNH8v4md8b2vct1HmPHdTZRZtue4olWzjJBXQ==
+    body:
+      encoding: UTF-8
+      string: '{"realestates.apartmentBuy":{"@id":"315676289","externalId":"HH73I0QJ","title":"Updated
+        Title","creationDate":"2020-02-12T16:20:22.578Z","lastModificationDate":"2020-02-18T09:44:07.246Z","address":{"street":"Updated
+        Street","houseNumber":"12","postcode":"26382","city":"Wilhelmshaven","wgs84Coordinate":{"latitude":53.5212436,"longitude":8.1049089},"geoHierarchy":{"continent":{"geoCodeId":1,"fullGeoCodeId":"1"},"country":{"geoCodeId":276,"fullGeoCodeId":"1276"},"region":{"geoCodeId":9,"fullGeoCodeId":"1276009"},"city":{"geoCodeId":44,"fullGeoCodeId":"1276009044"},"quarter":{"geoCodeId":6,"fullGeoCodeId":"1276009044006"},"neighbourhood":{"geoCodeId":3405000000170}}},"realEstateState":"ACTIVE","descriptionNote":"New
+        Description","locationNote":"New Location","attachments":[{"@xlink.href":"https:\/\/rest.sandbox-immobilienscout24.de\/restapi\/api\/offer\/v1.0\/user\/me\/realestate\/315676289\/attachment"}],"showAddress":"false","contact":{"@id":"96701088"},"common.publishChannels":[{"publishChannel":{"@id":"10000","@title":"ImmobilienScout24"}}],"apartmentType":"APARTMENT","floor":1,"lift":"false","energyCertificate":{"energyCertificateAvailability":"AVAILABLE","energyCertificateCreationDate":"FROM_01_MAY_2014","energyEfficiencyClass":"G"},"cellar":"YES","handicappedAccessible":"NOT_APPLICABLE","numberOfParkingSpaces":0,"condition":"WELL_KEPT","interiorQuality":"NORMAL","constructionYear":1902,"heatingType":"SELF_CONTAINED_CENTRAL_HEATING","heatingTypeEnev2014":"SELF_CONTAINED_CENTRAL_HEATING","firingTypes":[{"firingType":"GAS"}],"energySourcesEnev2014":{"energySourceEnev2014":"GAS"},"buildingEnergyRatingType":"ENERGY_REQUIRED","thermalCharacteristic":217.5,"energyConsumptionContainsWarmWater":"NOT_APPLICABLE","numberOfFloors":3,"numberOfBedRooms":2,"numberOfBathRooms":1,"guestToilet":"NOT_APPLICABLE","rented":"YES","rentalIncome":365,"listed":"NOT_APPLICABLE","parkingSpacePrice":0,"summerResidencePractical":"NOT_APPLICABLE","price":{"value":200000,"currency":"EUR","marketingType":"PURCHASE","priceIntervalType":"ONE_TIME_CHARGE"},"livingSpace":66.93,"numberOfRooms":4,"energyPerformanceCertificate":"true","builtInKitchen":"false","balcony":"false","garden":"false","courtage":{"hasCourtage":"YES","courtage":"4,75%
+        vom Kaufpreis inkl. 19% MwSt."},"serviceCharge":132}}'
+    http_version:
+  recorded_at: Tue, 18 Feb 2020 09:44:05 GMT
+recorded_with: VCR 5.0.0
