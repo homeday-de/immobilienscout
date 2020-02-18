@@ -32,6 +32,13 @@ Immobilienscout::API::Property.create({params})
 Immobilienscout::API::Property.publish({params})
 ```
 
+- Update property
+```ruby
+Immobilienscout::API::Property.update(is24_id, {params})
+```
+
+  _Note: You have to send all attributes, also if only one attribute has changed. Otherwise Immobilienscout cannot interpret if a missing attribute should be filled in with NULL or not._
+
 - Delete property
 ```ruby
 Immobilienscout::API::Property.destroy(is24_id)
