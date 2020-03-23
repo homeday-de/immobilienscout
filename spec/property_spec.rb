@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Immobilienscout::API::Property, type: :model do
@@ -33,7 +35,7 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
         context 'the property already exists' do
           it 'returns exception invalid request' do
             VCR.use_cassette('property_to_create_already_exists_is24') do
-              expect { described_class.create(create_params) }.to raise_exception(Immobilienscout::Errors::InvalidRequest)
+              expect { described_class.create(create_params) }.to raise_exception(Immobilienscout::Errors::ResourceValidation)
             end
           end
         end
@@ -51,7 +53,7 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
 
           it 'returns exception invalid request' do
             VCR.use_cassette('missing_mandatory_params_to_create_is24') do
-              expect { described_class.create(incomplete_create_params) }.to raise_exception(Immobilienscout::Errors::InvalidRequest)
+              expect { described_class.create(incomplete_create_params) }.to raise_exception(Immobilienscout::Errors::ResourceValidation)
             end
           end
         end
@@ -96,7 +98,7 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
         context 'the property does not exists' do
           it 'returns exception invalid request' do
             VCR.use_cassette('property_to_update_does_not_exists_is24', record: :once) do
-              expect { described_class.update('WrongID', update_params) }.to raise_exception(Immobilienscout::Errors::InvalidRequest)
+              expect { described_class.update('WrongID', update_params) }.to raise_exception(Immobilienscout::Errors::ResourceNotFound)
             end
           end
         end
@@ -114,7 +116,7 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
 
           it 'returns exception invalid request' do
             VCR.use_cassette('missing_mandatory_params_to_update_is24', record: :once) do
-              expect { described_class.update(update_id, incomplete_update_params) }.to raise_exception(Immobilienscout::Errors::InvalidRequest)
+              expect { described_class.update(update_id, incomplete_update_params) }.to raise_exception(Immobilienscout::Errors::ResourceValidation)
             end
           end
         end
@@ -160,8 +162,7 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
             {
               'common.publishObject': {
                 realEstate: {
-                  '@id': '1234567',
-
+                  '@id': '1234567'
                 },
                 publishChannel: {
                   '@id': '10000'
@@ -172,7 +173,7 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
 
           it 'returns exception invalid request' do
             VCR.use_cassette('invalid_resource_to_publish_is24') do
-              expect { described_class.publish(invalid_publish_params) }.to raise_exception(Immobilienscout::Errors::InvalidRequest)
+              expect { described_class.publish(invalid_publish_params) }.to raise_exception(Immobilienscout::Errors::CommonResourceNotFound)
             end
           end
         end
@@ -207,7 +208,7 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
       context 'when the property id is not valid' do
         it 'returns invalid request' do
           VCR.use_cassette('property_to_delete_does_not_exist_on_is24') do
-            expect { described_class.destroy('thisIsNotAValidId') }.to raise_exception(Immobilienscout::Errors::InvalidRequest)
+            expect { described_class.destroy('thisIsNotAValidId') }.to raise_exception(Immobilienscout::Errors::ResourceNotFound)
           end
         end
       end
@@ -246,7 +247,7 @@ RSpec.describe Immobilienscout::API::Property, type: :model do
     context 'when object does not exist' do
       it 'returns the resource' do
         VCR.use_cassette('property_to_show_does_not_exist') do
-          expect { described_class.show('000000000') }.to raise_exception(Immobilienscout::Errors::InvalidRequest) { |exception|
+          expect { described_class.show('000000000') }.to raise_exception(Immobilienscout::Errors::ResourceNotFound) { |exception|
             expect(exception.message).to eq('["Resource was not found."]')
           }
         end

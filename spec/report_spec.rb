@@ -93,7 +93,7 @@ RSpec.describe Immobilienscout::API::Report, type: :model do
         it 'returns exception' do
           VCR.use_cassette('property_to_create_report_does_not_exist_on_is24') do
             Timecop.freeze(Time.new(2019, 6, 11, 12, 0, 0)) do
-              expect { described_class.retrieve(is24_id, Date.today, Date.today) }.to raise_exception(Immobilienscout::Errors::InvalidRequest)
+              expect { described_class.retrieve(is24_id, Date.today, Date.today) }.to raise_exception(Immobilienscout::Errors::ResourceNotFound)
             end
           end
         end

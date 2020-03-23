@@ -42,28 +42,28 @@ module Immobilienscout
 
         def execute_post_request(url, params)
           parsed_response = Immobilienscout::Request.new(url, params).post
-          raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages) unless parsed_response.success?
+          Immobilienscout::RequestErrorHandler.handle(parsed_response) unless parsed_response.success?
 
           parsed_response
         end
 
         def execute_put_request(url, params)
           parsed_response = Immobilienscout::Request.new(url, params).put
-          raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages) unless parsed_response.success?
+          Immobilienscout::RequestErrorHandler.handle(parsed_response) unless parsed_response.success?
 
           parsed_response
         end
 
         def execute_delete_request(url)
           parsed_response = Immobilienscout::Request.new(url).delete
-          raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages) unless parsed_response.success?
+          Immobilienscout::RequestErrorHandler.handle(parsed_response) unless parsed_response.success?
 
           parsed_response
         end
 
         def execute_get_request(url)
           parsed_response = Immobilienscout::Request.new(url).get
-          raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages) unless parsed_response.success?
+          Immobilienscout::RequestErrorHandler.handle(parsed_response) unless parsed_response.success?
 
           parsed_response
         end
