@@ -10,14 +10,14 @@ module Immobilienscout
       def handle(parsed_response)
         if parsed_response.messages.is_a?(Array)
           error_code = parsed_response.messages&.first&.code
-          error_message = parsed_response.messages.map(&:messages)
+          error_messages = parsed_response.messages.map(&:messages)
         else
           error_code = parsed_response.messages['messageCode']
-          error_message = Array.wrap(parsed_response.messages['message'])
+          error_messages = Array.wrap(parsed_response.messages['message'])
         end
 
         error_class = error_class(error_code)
-        raise error_class, error_message
+        raise error_class, error_messages
       end
 
       private
