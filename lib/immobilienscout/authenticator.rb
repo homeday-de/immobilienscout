@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 
 module Immobilienscout
   class Authenticator
-    ALLOWED_METHODS = %w(POST GET DELETE PUT).freeze
-    OAUTH_SIGNATURE_METHOD = 'HMAC-SHA1'.freeze
-    OAUTH_VERSION = '1.0'.freeze
-    HASH_DIGEST = 'sha1'.freeze
+    ALLOWED_METHODS = %w[POST GET DELETE PUT].freeze
+    OAUTH_SIGNATURE_METHOD = 'HMAC-SHA1'
+    OAUTH_VERSION = '1.0'
+    HASH_DIGEST = 'sha1'
 
     def initialize(url, method, query_params = nil)
       @url = url
@@ -40,14 +42,15 @@ module Immobilienscout
     end
 
     def signing_key
-      "#{url_encode(Immobilienscout.configuration.consumer_secret)}&#{url_encode(Immobilienscout.configuration.access_token_secret)}"
+      "#{url_encode(Immobilienscout.configuration.consumer_secret)}&"\
+      "#{url_encode(Immobilienscout.configuration.access_token_secret)}"
     end
 
     def generate_nonce
       Base64.encode64(random_bytes).gsub(/\W/, '')
     end
 
-    def random_bytes(size=7)
+    def random_bytes(size = 7)
       OpenSSL::Random.random_bytes(size)
     end
 
@@ -80,7 +83,7 @@ module Immobilienscout
     end
 
     def auth_header_string(params)
-      header_params = params.each_with_object('OAuth ') do |(key, value), header|
+      header_params = params.each_with_object('OAuth '.dup) do |(key, value), header|
         header << "#{key}=#{value},"
       end
       header_params.chop
