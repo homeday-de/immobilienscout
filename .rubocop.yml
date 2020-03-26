@@ -1,6 +1,5 @@
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: 2.6
   Exclude:
     - bin/bundle
 Style/Documentation:
