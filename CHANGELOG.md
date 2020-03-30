@@ -5,7 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-Improve error handling.
+
+## [0.0.7] - 2020-03-30
+* Improve error handling. Catching a `InvalidRequest` error still works, but now
+  there are additional errors for a more fine-grained error-handling. Namely
+  `ResourceNotFound`, `CommonResourceNotFound` and `ResourceValidation`.
+* Add `rubocop`, `rubocop-rspec` and `rubocop-performance`
+* Build with Ruby `2.6.5` on Travis
 
 ## [0.0.6] - 2020-02-18
 Adding update endpoint to update a property
