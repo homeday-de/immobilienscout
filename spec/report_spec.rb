@@ -4,7 +4,7 @@ require 'spec_helper'
 
 RSpec.describe Immobilienscout::API::Report, type: :model do
   let!(:sandbox_url) { 'https://rest.sandbox-immobilienscout24.de' }
-  let!(:configuration_double) { double(consumer_key: 'consumer_key', access_token: 'access_token', consumer_secret: 'consumer_secret', access_token_secret: 'access_token_secret') }
+  let!(:configuration_double) { instance_double('Immobilienscout::Configuration', consumer_key: 'consumer_key', access_token: 'access_token', consumer_secret: 'consumer_secret', access_token_secret: 'access_token_secret') }
 
   before do
     allow(Immobilienscout::Client).to receive(:api_url).and_return(sandbox_url)

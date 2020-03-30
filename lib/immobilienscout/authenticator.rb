@@ -83,7 +83,7 @@ module Immobilienscout
     end
 
     def auth_header_string(params)
-      header_params = params.each_with_object('OAuth '.dup) do |(key, value), header|
+      header_params = params.each_with_object(+'OAuth ') do |(key, value), header|
         header << "#{key}=#{value},"
       end
       header_params.chop

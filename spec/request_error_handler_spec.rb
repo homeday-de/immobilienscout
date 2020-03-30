@@ -3,10 +3,13 @@
 require 'spec_helper'
 
 RSpec.describe Immobilienscout::RequestErrorHandler, type: :model do
-  Message = Struct.new(:success?, :code, :messages)
-  ERROR_RESOURCE_NOT_FOUND = 'ERROR_RESOURCE_NOT_FOUND'
-  ERROR_COMMON_RESOURCE_NOT_FOUND = 'ERROR_COMMON_RESOURCE_NOT_FOUND'
-  ERROR_RESOURCE_VALIDATION = 'ERROR_RESOURCE_VALIDATION'
+  before do
+    message = Struct.new(:success?, :code, :messages)
+    stub_const('Message', message)
+    stub_const('ERROR_RESOURCE_NOT_FOUND', 'ERROR_RESOURCE_NOT_FOUND')
+    stub_const('ERROR_COMMON_RESOURCE_NOT_FOUND', 'ERROR_COMMON_RESOURCE_NOT_FOUND')
+    stub_const('ERROR_RESOURCE_VALIDATION', 'ERROR_RESOURCE_VALIDATION')
+  end
 
   describe 'ERROR_RESOURCE_NOT_FOUND' do
     it 'raises an ResourceNotFound error if messages is an Array' do

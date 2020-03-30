@@ -6,7 +6,7 @@ RSpec.describe Immobilienscout::ResponseParser, type: :model do
   describe '#call' do
     context 'when message is present' do
       context 'when response has just one message' do
-        let!(:response) { double(code: '201', body: { 'common.messages': [{ 'message': { 'messageCode': 'MESSAGE_RESOURCE_CREATED', 'message': 'Resource [realestate] with id [314712920] has been created.', 'id': '314712920' } }] }.to_json) }
+        let!(:response) { instance_double('Net::HTTPResponse', code: '201', body: { 'common.messages': [{ 'message': { 'messageCode': 'MESSAGE_RESOURCE_CREATED', 'message': 'Resource [realestate] with id [314712920] has been created.', 'id': '314712920' } }] }.to_json) }
         let!(:service) { described_class.new(response) }
 
         it 'returns messages' do
@@ -23,7 +23,7 @@ RSpec.describe Immobilienscout::ResponseParser, type: :model do
       end
 
       context 'when response has two or more messages' do
-        let!(:response) { double(code: '412', body: { 'common.messages': [{ 'message': [{ 'messageCode': 'ERROR_RESOURCE_VALIDATION', 'message': 'Error while validating input for the resource. [MESSAGE: numberOfRooms : null : MANDATORY_FIELD_EMPTY]' }, { 'messageCode': 'ERROR_RESOURCE_VALIDATION', 'message': 'Error while validating input for the resource. [MESSAGE: livingSpace : null : MANDATORY_FIELD_EMPTY]' }, { 'messageCode': 'ERROR_RESOURCE_VALIDATION', 'message': 'Error while validating input for the resource. [MESSAGE: title :  : MANDATORY_FIELD_EMPTY]' }, { 'messageCode': 'ERROR_RESOURCE_VALIDATION', 'message': 'Error while validating input for the resource. [MESSAGE: courtageInformation.courtage :  : COURTAGE_EMPTY]' }] }] }.to_json) }
+        let!(:response) { instance_double('Net::HTTPResponse', code: '412', body: { 'common.messages': [{ 'message': [{ 'messageCode': 'ERROR_RESOURCE_VALIDATION', 'message': 'Error while validating input for the resource. [MESSAGE: numberOfRooms : null : MANDATORY_FIELD_EMPTY]' }, { 'messageCode': 'ERROR_RESOURCE_VALIDATION', 'message': 'Error while validating input for the resource. [MESSAGE: livingSpace : null : MANDATORY_FIELD_EMPTY]' }, { 'messageCode': 'ERROR_RESOURCE_VALIDATION', 'message': 'Error while validating input for the resource. [MESSAGE: title :  : MANDATORY_FIELD_EMPTY]' }, { 'messageCode': 'ERROR_RESOURCE_VALIDATION', 'message': 'Error while validating input for the resource. [MESSAGE: courtageInformation.courtage :  : COURTAGE_EMPTY]' }] }] }.to_json) }
         let!(:service) { described_class.new(response) }
 
         it 'returns messages' do
