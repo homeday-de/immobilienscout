@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Immobilienscout::API::Attachment, type: :class do
   let(:attachment) { File.open('spec/fixtures/files/image.png') }
   let!(:sandbox_url) { 'https://rest.sandbox-immobilienscout24.de' }
-  let!(:configuration_double) { double(consumer_key: 'consumer_key', access_token: 'access_token', consumer_secret: 'consumer_secret', access_token_secret: 'access_token_secret') }
+  let!(:configuration_double) { instance_double('Immobilienscout::Configuration', consumer_key: 'consumer_key', access_token: 'access_token', consumer_secret: 'consumer_secret', access_token_secret: 'access_token_secret') }
 
   before do
     allow(Immobilienscout::Client).to receive(:api_url).and_return(sandbox_url)
@@ -14,7 +16,7 @@ RSpec.describe Immobilienscout::API::Attachment, type: :class do
     context 'when request is successful' do
       it 'returns created' do
         VCR.use_cassette('attachment_is_successfuly_created_is24') do
-          response = described_class.add('71624000', attachment, {'common.attachment':{'@xmlns':{'common':'http:\/\/rest.immobilienscout24.de\/schema\/common\/1.0'},'@xsi.type':'common:Picture','title':'Kochecke','externalId':'kitchen2'}})
+          response = described_class.add('71624000', attachment, 'common.attachment': { '@xmlns': { 'common': 'http:\/\/rest.immobilienscout24.de\/schema\/common\/1.0' }, '@xsi.type': 'common:Picture', 'title': 'Kochecke', 'externalId': 'kitchen2' })
 
           expect(response.code).to eq '201'
           expect(response.messages.count).to eq 1
@@ -48,14 +50,14 @@ RSpec.describe Immobilienscout::API::Attachment, type: :class do
             {
               attachmentsorder: 'http://rest.immobilienscout24.de/schema/attachmentsorder/1.0'
             },
-            attachmentId: [
-              '896939747',
-              '896939746',
-              '896939748',
-              '896939750',
-              '896939751',
-              '896939749',
-              '896939745'
+            attachmentId: %w[
+              896939747
+              896939746
+              896939748
+              896939750
+              896939751
+              896939749
+              896939745
             ]
           }
         }

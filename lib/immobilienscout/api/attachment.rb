@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Immobilienscout
   module API
     class Attachment
@@ -10,7 +12,9 @@ module Immobilienscout
           params = { attachment: binary_file, metadata: metadata_file }
           parsed_response = Immobilienscout::Request.new(url, params).post_with_multipart
 
-          raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages) unless parsed_response.success?
+          unless parsed_response.success?
+            raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages)
+          end
 
           parsed_response
         end
@@ -19,7 +23,9 @@ module Immobilienscout
           raise ArgumentError unless params.present?
 
           parsed_response = Immobilienscout::Request.new(put_order_url(is24_id), params).put
-          raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages) unless parsed_response.success?
+          unless parsed_response.success?
+            raise Immobilienscout::Errors::InvalidRequest, parsed_response.messages.map(&:messages)
+          end
 
           parsed_response
         end
@@ -36,7 +42,8 @@ module Immobilienscout
         end
 
         def put_order_url(is24_id)
-          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}/attachment/attachmentsorder"
+          "#{Immobilienscout::Client.api_url}/restapi/api/"\
+          "offer/v1.0/user/me/realestate/#{is24_id}/attachment/attachmentsorder"
         end
       end
     end

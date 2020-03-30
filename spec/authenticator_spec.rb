@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Immobilienscout::Authenticator, type: :model do
   describe '#call' do
     context 'when params are present' do
       context 'when query params are not present' do
-        let!(:configuration_double) { double(consumer_key: 'consumer_key', access_token: 'access_token', consumer_secret: 'consumer_secret', access_token_secret: 'access_token_secret') }
+        let!(:configuration_double) { instance_double('Immobilienscout::Configuration', consumer_key: 'consumer_key', access_token: 'access_token', consumer_secret: 'consumer_secret', access_token_secret: 'access_token_secret') }
         let!(:service) { described_class.new('https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate', 'POST') }
 
         it 'returns authorization string' do
@@ -22,7 +24,7 @@ RSpec.describe Immobilienscout::Authenticator, type: :model do
     end
 
     context 'when params are not present' do
-      context 'when method is not present' do
+      context 'when url is not present' do
         let(:service) { described_class.new(nil, 'POST') }
 
         it 'raises exception' do

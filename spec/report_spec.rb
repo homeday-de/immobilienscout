@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Immobilienscout::API::Report, type: :model do
   let!(:sandbox_url) { 'https://rest.sandbox-immobilienscout24.de' }
-  let!(:configuration_double) { double(consumer_key: 'consumer_key', access_token: 'access_token', consumer_secret: 'consumer_secret', access_token_secret: 'access_token_secret') }
+  let!(:configuration_double) { instance_double('Immobilienscout::Configuration', consumer_key: 'consumer_key', access_token: 'access_token', consumer_secret: 'consumer_secret', access_token_secret: 'access_token_secret') }
 
   before do
     allow(Immobilienscout::Client).to receive(:api_url).and_return(sandbox_url)
@@ -20,9 +22,9 @@ RSpec.describe Immobilienscout::API::Report, type: :model do
               response = described_class.retrieve(is24_id, Date.today, Date.today)
 
               expect(response.code).to eq '200'
-              expect(response.messages).to eq({"dailyReports"=>[{"date"=>"2019-06-11", "matchesResultList"=>766,
-                "displaysResultList"=>116, "exposeHits"=>5, "onShortList"=>0, "clicksHomepage"=>0, "emailContacts"=>0, "clicksSendUrl"=>0, "clickFocusPlacement"=>0,
-                "showMiniExposeFocusPlacement"=>0, "displayFocusPlacement"=>0}], "realEstateId"=>"S3W0UP6C"})
+              expect(response.messages).to eq('dailyReports' => [{ 'date' => '2019-06-11', 'matchesResultList' => 766,
+                                                                   'displaysResultList' => 116, 'exposeHits' => 5, 'onShortList' => 0, 'clicksHomepage' => 0, 'emailContacts' => 0, 'clicksSendUrl' => 0, 'clickFocusPlacement' => 0,
+                                                                   'showMiniExposeFocusPlacement' => 0, 'displayFocusPlacement' => 0 }], 'realEstateId' => 'S3W0UP6C')
             end
           end
         end
@@ -37,11 +39,11 @@ RSpec.describe Immobilienscout::API::Report, type: :model do
               response = described_class.retrieve(is24_id, 2.days.ago.to_date, Date.today)
 
               expect(response.code).to eq '200'
-              expect(response.messages).to eq({"dailyReports"=>[{"date"=>"2019-06-10", "matchesResultList"=>776,
-                "displaysResultList"=>166, "exposeHits"=>7, "onShortList"=>0, "clicksHomepage"=>0, "emailContacts"=>0, "clicksSendUrl"=>0, "clickFocusPlacement"=>0,
-                "showMiniExposeFocusPlacement"=>0, "displayFocusPlacement"=>0}, {"date"=>"2019-06-11", "matchesResultList"=>766,
-                "displaysResultList"=>116, "exposeHits"=>5, "onShortList"=>0, "clicksHomepage"=>0, "emailContacts"=>0, "clicksSendUrl"=>0, "clickFocusPlacement"=>0,
-                "showMiniExposeFocusPlacement"=>0, "displayFocusPlacement"=>0}], "realEstateId"=>"S3W0UP6C"})
+              expect(response.messages).to eq('dailyReports' => [{ 'date' => '2019-06-10', 'matchesResultList' => 776,
+                                                                   'displaysResultList' => 166, 'exposeHits' => 7, 'onShortList' => 0, 'clicksHomepage' => 0, 'emailContacts' => 0, 'clicksSendUrl' => 0, 'clickFocusPlacement' => 0,
+                                                                   'showMiniExposeFocusPlacement' => 0, 'displayFocusPlacement' => 0 }, { 'date' => '2019-06-11', 'matchesResultList' => 766,
+                                                                                                                                          'displaysResultList' => 116, 'exposeHits' => 5, 'onShortList' => 0, 'clicksHomepage' => 0, 'emailContacts' => 0, 'clicksSendUrl' => 0, 'clickFocusPlacement' => 0,
+                                                                                                                                          'showMiniExposeFocusPlacement' => 0, 'displayFocusPlacement' => 0 }], 'realEstateId' => 'S3W0UP6C')
             end
           end
         end
@@ -56,7 +58,7 @@ RSpec.describe Immobilienscout::API::Report, type: :model do
               response = described_class.retrieve(is24_id, Date.today, Date.today)
 
               expect(response.code).to eq '200'
-              expect(response.messages).to eq({"dailyReports"=>[], "realEstateId"=>"22AOIMOP"})
+              expect(response.messages).to eq('dailyReports' => [], 'realEstateId' => '22AOIMOP')
             end
           end
         end
@@ -93,7 +95,7 @@ RSpec.describe Immobilienscout::API::Report, type: :model do
         it 'returns exception' do
           VCR.use_cassette('property_to_create_report_does_not_exist_on_is24') do
             Timecop.freeze(Time.new(2019, 6, 11, 12, 0, 0)) do
-              expect { described_class.retrieve(is24_id, Date.today, Date.today) }.to raise_exception(Immobilienscout::Errors::InvalidRequest)
+              expect { described_class.retrieve(is24_id, Date.today, Date.today) }.to raise_exception(Immobilienscout::Errors::ResourceNotFound)
             end
           end
         end

@@ -2,7 +2,7 @@
 
 module Immobilienscout
   module Errors
-    class InvalidRequest < StandardError
+    class ResourceValidation < InvalidRequest
     end
   end
 end

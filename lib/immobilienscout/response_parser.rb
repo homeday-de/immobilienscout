@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Immobilienscout
   class ResponseParser
-    HTTP_OK = %w(200 201).freeze
+    HTTP_OK = %w[200 201].freeze
 
     Message = Struct.new(:success?, :code, :messages, :id)
 
