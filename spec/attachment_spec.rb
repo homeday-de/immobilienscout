@@ -5,7 +5,15 @@ require 'spec_helper'
 RSpec.describe Immobilienscout::API::Attachment, type: :class do
   let(:attachment) { File.open('spec/fixtures/files/image.png') }
   let!(:sandbox_url) { 'https://rest.sandbox-immobilienscout24.de' }
-  let!(:configuration_double) { instance_double('Immobilienscout::Configuration', consumer_key: 'consumer_key', access_token: 'access_token', consumer_secret: 'consumer_secret', access_token_secret: 'access_token_secret') }
+  let!(:configuration_double) do
+    instance_double(
+      'Immobilienscout::Configuration',
+      consumer_key: 'consumer_key',
+      access_token: 'access_token',
+      consumer_secret: 'consumer_secret',
+      access_token_secret: 'access_token_secret'
+    )
+  end
 
   before do
     allow(Immobilienscout::Client).to receive(:api_url).and_return(sandbox_url)
@@ -86,6 +94,50 @@ RSpec.describe Immobilienscout::API::Attachment, type: :class do
       context 'when mandatory params for put_order method are not present' do
         it 'returns Argument Error' do
           expect { described_class.put_order }.to raise_exception(ArgumentError)
+        end
+      end
+    end
+  end
+
+  describe '#retrieve_all' do
+    context 'when a property exists and has attachments' do
+      it 'returns the resource' do
+        VCR.use_cassette('attachment_retrieve_all') do
+          parsed_response = described_class.retrieve_all('ext-D1TGDF9V')
+          expect(parsed_response.is_a?(Struct)).to eq true
+          expect(parsed_response.success?).to eq true
+          expect(parsed_response.code).to eq '200'
+
+          expect(parsed_response['messages']['common.attachments'].first['attachment'][0]['@id']).to eq('897494197')
+          expect(parsed_response['messages']['common.attachments'].first['attachment'][1]['@id']).to eq('897494198')
+        end
+      end
+    end
+  end
+
+  describe '#destroy' do
+    context 'when request is successful' do
+      it 'returns resource deleted' do
+        VCR.use_cassette('attachment_successfully_deleted') do
+          parsed_response = described_class.destroy('ext-D1TGDF9V', '897494196')
+
+          expect(parsed_response.is_a?(Struct)).to eq true
+          expect(parsed_response.success?).to eq true
+          expect(parsed_response.code).to eq '200'
+          expect(parsed_response.messages.count).to eq 1
+          expect(parsed_response.messages.first.code).to eq 'MESSAGE_RESOURCE_DELETED'
+          expect(parsed_response.messages.first.messages).to eq 'Resource [attachment] with id [897494196] has been deleted.'
+          expect(parsed_response.messages.first.id).to eq '897494196'
+        end
+      end
+    end
+
+    context 'when request is unsuccessful' do
+      context 'when the property id is not valid' do
+        it 'returns invalid request' do
+          VCR.use_cassette('attachment_to_delete_does_not_exist_on_is24') do
+            expect { described_class.destroy('ext-D1TGDF9V', '00000') }.to raise_exception(Immobilienscout::Errors::ResourceNotFound)
+          end
         end
       end
     end

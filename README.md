@@ -37,7 +37,14 @@ Immobilienscout::API::Property.publish({params})
 Immobilienscout::API::Property.update(is24_id, {params})
 ```
 
-  _Note: You have to send all attributes, also if only one attribute has changed. Otherwise Immobilienscout cannot interpret if a missing attribute should be filled in with NULL or not._
+_Notes:_
+
+You have to send all attributes, also if only one attribute has changed. Otherwise Immobilienscout cannot interpret if a missing attribute should be filled in with NULL or not.
+
+`is24_id` is the id returned by Immobilienscout when you first created the property.
+
+If you have provided a custom id, you can use `"ext-#{custom_id}"` instead of the is24_id.
+
 
 - Delete property
 ```ruby
@@ -58,6 +65,16 @@ Immobilienscout::API::Attachment.add(is24_id, binary_file, {metadata})
  - Order attachments for a specific property
 ```ruby
 Immobilienscout::API::Attachment.put_order(is24_id, {params})
+```
+
+ - Retrieve all attachments for a specific property
+```ruby
+Immobilienscout::API::Attachment.retrieve_all(is24_id)
+```
+
+ - Delete an attachment for a specific property
+```ruby
+Immobilienscout::API::Attachment.destroy(is24_id, attachment_id)
 ```
 
 #### Report
