@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/ext-D1TGDF9V/attachment
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=LYiEWxQUuA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560263360,oauth_token=access_token,oauth_version=1.0,oauth_signature=DZd9mD1Esy87NVjfJbDiA%2Fc5FTA%3D
+
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '4863'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 14 Jul 2020 21:43:40 GMT
+      L-Is24-Requestrefnum:
+      - f25f1ae9-063e-4943-aa92-b2f4fce8887a
+      L-Is24-Apiclient:
+      - consumer_key
+      L-Is24-Causerid:
+      - '121920857'
+      L-Is24-Resourceid:
+      - ext-D1TGDF9V
+      Etag:
+      - '"0f47bea0eb29247095d6bb61a04d1c55a"'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 c80802be222c215cc6dc681294b37eb8.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - CDG50-C1
+      X-Amz-Cf-Id:
+      - "-ePFgpRr9ZjhG9bRg_zmauUKskfsITzt4SQ7X8wAsyFTmuifSdjCcw=="
+    body:
+      encoding: UTF-8
+      string: '{"common.attachments":[{"attachment":[{"@xsi.type":"common:Picture","@xlink.href":"https:\/\/rest.sandbox-immobilienscout24.de\/restapi\/api\/offer\/v1.0\/user\/me\/realestate\/ext-D1TGDF9V\/attachment\/897494197","@id":"897494197","@modification":"2020-07-14T15:41:04.305Z","title":"Homeday
+        Prozess","externalId":"homeday_process_is24.png","externalCheckSum":"c68ad44b93928c9531e14269924d8390","floorplan":"false","titlePicture":"true","urls":[{"url":[{"@scale":"SCALE","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/63e388aa-17b2-4a40-b875-7bdb31777b72-897494197.png\/ORIG\/resize\/%WIDTH%x%HEIGHT%>\/format\/jpg"},{"@scale":"SCALE_AND_CROP","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/63e388aa-17b2-4a40-b875-7bdb31777b72-897494197.png\/ORIG\/legacy_thumbnail\/%WIDTH%x%HEIGHT%\/format\/jpg"},{"@scale":"WHITE_FILLING","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/63e388aa-17b2-4a40-b875-7bdb31777b72-897494197.png\/ORIG\/resize\/%WIDTH%x%HEIGHT%>\/extent\/%WIDTH%x%HEIGHT%\/format\/jpg"},{"@scale":"SCALE_540x540","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/63e388aa-17b2-4a40-b875-7bdb31777b72-897494197.png\/ORIG\/resize\/540x540>\/format\/jpg"},{"@scale":"SCALE_210x210","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/63e388aa-17b2-4a40-b875-7bdb31777b72-897494197.png\/ORIG\/resize\/210x210>\/format\/jpg"},{"@scale":"SCALE_400x300","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/63e388aa-17b2-4a40-b875-7bdb31777b72-897494197.png\/ORIG\/resize\/400x300>\/format\/jpg"},{"@scale":"SCALE_118x118","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/63e388aa-17b2-4a40-b875-7bdb31777b72-897494197.png\/ORIG\/resize\/118x118>\/extent\/118x118\/format\/jpg"},{"@scale":"SCALE_60x60","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/63e388aa-17b2-4a40-b875-7bdb31777b72-897494197.png\/ORIG\/resize\/60x60>\/extent\/60x60\/format\/jpg"},{"@scale":"SCALE_73x73","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/63e388aa-17b2-4a40-b875-7bdb31777b72-897494197.png\/ORIG\/legacy_thumbnail\/73x73\/format\/jpg"},{"@scale":"SCALE_1000x1000","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/63e388aa-17b2-4a40-b875-7bdb31777b72-897494197.png\/ORIG\/resize\/1000x1000>\/format\/jpg"}]}]},{"@xsi.type":"common:Picture","@xlink.href":"https:\/\/rest.sandbox-immobilienscout24.de\/restapi\/api\/offer\/v1.0\/user\/me\/realestate\/ext-D1TGDF9V\/attachment\/897494198","@id":"897494198","@modification":"2020-07-14T15:41:04.957Z","title":"Ihre
+        Immobilie verkaufen?","externalId":"homeday_service_advertisement.png","externalCheckSum":"3d744dfd8d5a53d8c3dedae18d548733","floorplan":"false","titlePicture":"false","urls":[{"url":[{"@scale":"SCALE","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/4c3d9ea9-2a5d-4e83-96ba-91dd0f1ced6d-897494198.png\/ORIG\/resize\/%WIDTH%x%HEIGHT%>\/format\/jpg"},{"@scale":"SCALE_AND_CROP","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/4c3d9ea9-2a5d-4e83-96ba-91dd0f1ced6d-897494198.png\/ORIG\/legacy_thumbnail\/%WIDTH%x%HEIGHT%\/format\/jpg"},{"@scale":"WHITE_FILLING","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/4c3d9ea9-2a5d-4e83-96ba-91dd0f1ced6d-897494198.png\/ORIG\/resize\/%WIDTH%x%HEIGHT%>\/extent\/%WIDTH%x%HEIGHT%\/format\/jpg"},{"@scale":"SCALE_540x540","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/4c3d9ea9-2a5d-4e83-96ba-91dd0f1ced6d-897494198.png\/ORIG\/resize\/540x540>\/format\/jpg"},{"@scale":"SCALE_210x210","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/4c3d9ea9-2a5d-4e83-96ba-91dd0f1ced6d-897494198.png\/ORIG\/resize\/210x210>\/format\/jpg"},{"@scale":"SCALE_400x300","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/4c3d9ea9-2a5d-4e83-96ba-91dd0f1ced6d-897494198.png\/ORIG\/resize\/400x300>\/format\/jpg"},{"@scale":"SCALE_118x118","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/4c3d9ea9-2a5d-4e83-96ba-91dd0f1ced6d-897494198.png\/ORIG\/resize\/118x118>\/extent\/118x118\/format\/jpg"},{"@scale":"SCALE_60x60","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/4c3d9ea9-2a5d-4e83-96ba-91dd0f1ced6d-897494198.png\/ORIG\/resize\/60x60>\/extent\/60x60\/format\/jpg"},{"@scale":"SCALE_73x73","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/4c3d9ea9-2a5d-4e83-96ba-91dd0f1ced6d-897494198.png\/ORIG\/legacy_thumbnail\/73x73\/format\/jpg"},{"@scale":"SCALE_1000x1000","@href":"https:\/\/pictures.sandbox-immobilienscout24.de\/listings-test\/4c3d9ea9-2a5d-4e83-96ba-91dd0f1ced6d-897494198.png\/ORIG\/resize\/1000x1000>\/format\/jpg"}]}]}]}]}'
+    http_version: null
+  recorded_at: Tue, 14 Jul 2020 21:43:40 GMT
+recorded_with: VCR 5.1.0

@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.0.8] - 2020-07-16
+* Added retrieve_all endpoint to attachments to retrieve all attachments of a property
+* Added destroy endpoint to attachments to destroy an attachment of a property
 
 ## [0.0.7] - 2020-03-30
 * Improve error handling. Catching a `InvalidRequest` error still works, but now

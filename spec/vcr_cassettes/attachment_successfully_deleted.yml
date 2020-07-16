@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/ext-D1TGDF9V/attachment/897494196
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=LYiEWxQUuA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560263360,oauth_token=access_token,oauth_version=1.0,oauth_signature=DZd9mD1Esy87NVjfJbDiA%2Fc5FTA%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '165'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 14 Jul 2020 21:41:03 GMT
+      L-Is24-Requestrefnum:
+      - dc21bfb7-16b0-4839-9f83-fa79fba342f8
+      L-Is24-Apiclient:
+      - consumer_key
+      L-Is24-Causerid:
+      - '121920857'
+      L-Is24-Resourceid:
+      - ext-D1TGDF9V
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 8d84df16ba20ff1d2ca3914948494e04.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - FRA54
+      X-Amz-Cf-Id:
+      - e7i60NxYdNhryNAk6LQVoiCwrFVhfzvn-7zQnn1ReJQDKc7Nacs3gQ==
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"MESSAGE_RESOURCE_DELETED","message":"Resource
+        [attachment] with id [897494196] has been deleted.","id":"897494196"}}]}'
+    http_version: null
+  recorded_at: Tue, 14 Jul 2020 21:41:03 GMT
+recorded_with: VCR 5.1.0

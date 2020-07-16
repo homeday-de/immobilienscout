@@ -30,6 +30,27 @@ module Immobilienscout
           parsed_response
         end
 
+        def retrieve_all(is24_id)
+          raise ArgumentError unless is24_id.present?
+
+          url = retrieve_all_url(is24_id)
+          parsed_response = Immobilienscout::Request.new(url).get
+          Immobilienscout::RequestErrorHandler.handle(parsed_response) unless parsed_response.success?
+
+          parsed_response
+        end
+
+        def destroy(is24_id, attachment_id)
+          raise ArgumentError unless is24_id.present?
+          raise ArgumentError unless attachment_id.present?
+
+          url = destroy_url(is24_id, attachment_id)
+          parsed_response = Immobilienscout::Request.new(url).delete
+          Immobilienscout::RequestErrorHandler.handle(parsed_response) unless parsed_response.success?
+
+          parsed_response
+        end
+
         private
 
         def create_metadata_file(params)
@@ -44,6 +65,16 @@ module Immobilienscout
         def put_order_url(is24_id)
           "#{Immobilienscout::Client.api_url}/restapi/api/"\
           "offer/v1.0/user/me/realestate/#{is24_id}/attachment/attachmentsorder"
+        end
+
+        def retrieve_all_url(is24_id)
+          "#{Immobilienscout::Client.api_url}/restapi/api/"\
+          "offer/v1.0/user/me/realestate/#{is24_id}/attachment"
+        end
+
+        def destroy_url(is24_id, attachment_id)
+          "#{Immobilienscout::Client.api_url}/restapi/api/"\
+          "offer/v1.0/user/me/realestate/#{is24_id}/attachment/#{attachment_id}"
         end
       end
     end

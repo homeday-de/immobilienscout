@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/ext-D1TGDF9V/attachment/00000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=LYiEWxQUuA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560263360,oauth_token=access_token,oauth_version=1.0,oauth_signature=DZd9mD1Esy87NVjfJbDiA%2Fc5FTA%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '112'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 14 Jul 2020 21:56:38 GMT
+      L-Is24-Requestrefnum:
+      - 34f59f8f-522f-4b7e-8ce7-2ab856520a2e
+      L-Is24-Apiclient:
+      - consumer_key
+      L-Is24-Causerid:
+      - '121920857'
+      L-Is24-Resourceid:
+      - ext-D1TGDF9V
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 6e8dd39e00d9a5c1a31d69ffa2821a5e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - FRA54
+      X-Amz-Cf-Id:
+      - zvZatYg3N2htHEZccHorZEmNvCltKr84hIsRqe0yqLo4eOupxKDz3A==
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"ERROR_RESOURCE_NOT_FOUND","message":"Resource
+        was not found."}}]}'
+    http_version: null
+  recorded_at: Tue, 14 Jul 2020 21:56:38 GMT
+recorded_with: VCR 5.1.0

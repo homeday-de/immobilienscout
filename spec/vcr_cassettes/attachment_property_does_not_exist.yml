@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/000000000/attachment
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=nonce,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1552567703,oauth_token=access_token,oauth_version=1.0,oauth_signature=foo
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '112'
+      Connection:
+      - keep-alive
+      Date:
+      - Thu, 16 Jul 2020 10:42:58 GMT
+      L-Is24-Requestrefnum:
+      - cee21946-4c58-4397-aff2-45981763c848
+      L-Is24-Apiclient:
+      - myHomedayKey
+      L-Is24-Causerid:
+      - '121920857'
+      L-Is24-Resourceid:
+      - '000000000'
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 9d11c99c18949c4780bf1400ceca8369.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - TXL52-C1
+      X-Amz-Cf-Id:
+      - vR4I_s2vAju_CJsjGz_LJGpKQ8jfLsEFLV-N3bQfqQjvnbzDiZqzpQ==
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"ERROR_RESOURCE_NOT_FOUND","message":"Resource
+        was not found."}}]}'
+    http_version: null
+  recorded_at: Thu, 16 Jul 2020 10:42:58 GMT
+recorded_with: VCR 5.1.0
