@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    immobilienscout (0.0.7)
+    immobilienscout (0.0.8)
       activesupport
       json
       multipart-post
