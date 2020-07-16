@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/315920212/attachment
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=nonce,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1552567703,oauth_token=access_token,oauth_version=1.0,oauth_signature=foo
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '25'
+      Connection:
+      - keep-alive
+      Date:
+      - Thu, 16 Jul 2020 10:39:58 GMT
+      L-Is24-Requestrefnum:
+      - 066a1379-f23c-47d8-b2af-cd64c6a1aee3
+      L-Is24-Apiclient:
+      - myHomedayKey
+      L-Is24-Causerid:
+      - '121920857'
+      L-Is24-Resourceid:
+      - '315920212'
+      Etag:
+      - '"04de8e9ad2afcccef41485efa78d3161f"'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 c34e5d6ab957cd4e49caca604410ca40.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - ATL56-C1
+      X-Amz-Cf-Id:
+      - 0BsVxwcna-god8kXIy1oqzHMMx4JTJRahC_UbjoaS5Qi0_PHyeyJ4g==
+    body:
+      encoding: UTF-8
+      string: '{"common.attachments":[]}'
+    http_version: null
+  recorded_at: Thu, 16 Jul 2020 10:39:58 GMT
+recorded_with: VCR 5.1.0

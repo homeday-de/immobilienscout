@@ -113,6 +113,27 @@ RSpec.describe Immobilienscout::API::Attachment, type: :class do
         end
       end
     end
+
+    context 'when a property exists and has no attachments' do
+      it 'returns the resource' do
+        VCR.use_cassette('attachment_retrieve_all_without_attachemnts') do
+          parsed_response = described_class.retrieve_all('315920212')
+          expect(parsed_response.is_a?(Struct)).to eq true
+          expect(parsed_response.success?).to eq true
+          expect(parsed_response.code).to eq '200'
+
+          expect(parsed_response['messages']['common.attachments'].size).to eq(0)
+        end
+      end
+    end
+
+    context 'when a property does not exist' do
+      it 'returns not found' do
+        VCR.use_cassette('attachment_property_does_not_exist') do
+          expect { described_class.retrieve_all('000000000') }.to raise_exception(Immobilienscout::Errors::ResourceNotFound)
+        end
+      end
+    end
   end
 
   describe '#destroy' do
