@@ -77,6 +77,22 @@ Immobilienscout::API::Attachment.retrieve_all(is24_id)
 Immobilienscout::API::Attachment.destroy(is24_id, attachment_id)
 ```
 
+#### On-Top Placements
+- Add On-Top Placement
+```ruby
+Immobilienscout::API::OnTopPlacement.add(is24_id, placement_type)
+```
+
+- Show On-Top Placement
+```ruby
+Immobilienscout::API::OnTopPlacement.show(is24_id, placement_type)
+```
+
+- Delete On-Top Placement
+```ruby
+Immobilienscout::API::OnTopPlacement.delete(is24_id, placement_type)
+```
+
 #### Report
 - Get scout report
 ```ruby

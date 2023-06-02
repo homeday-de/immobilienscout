@@ -5,6 +5,7 @@ module Immobilienscout
     HTTP_OK = %w[200 201].freeze
 
     Message = Struct.new(:success?, :code, :messages, :id)
+    PremiumPlacement = Struct.new(:code, :message, :service_period_from, :service_period_to, :external_id)
 
     def initialize(response)
       @response = response
@@ -33,18 +34,40 @@ module Immobilienscout
     end
 
     def messages(response_body)
-      return response_body unless response_body['common.messages']
+      if response_body['common.messages']
+        common_message(response_body)
+      elsif response_body['premiumplacement.premiumplacements']
+        premium_placement(response_body)
+      else
+        response_body
+      end
+    end
 
+    def common_message(response_body)
       messages = response_body['common.messages'].first['message']
       messages = [messages] if messages.is_a? Hash
       messages.map { |msg| Message.new(nil, msg['messageCode'], msg['message'], msg['id']) }
     end
 
-    def id(response_body)
-      return unless response_body['common.messages']
+    def premium_placement(response_body)
+      placements = response_body['premiumplacement.premiumplacements'].first['premiumplacement']
+      placements = [placements] if placements.is_a? Hash
+      placements.map do |placement|
+        PremiumPlacement.new(
+          placement['messageCode'], placement['message'], placement['servicePeriod']['dateFrom'],
+          placement['servicePeriod']['dateTo'], placement['externalId']
+        )
+      end
+    end
 
-      messages = response_body['common.messages'].first['message']
-      messages['id'] if messages.is_a? Hash
+    def id(response_body)
+      if response_body['common.messages']
+        messages = response_body['common.messages'].first['message']
+        messages['id'] if messages.is_a? Hash
+      elsif response_body['premiumplacement.premiumplacements']
+        placements = response_body['premiumplacement.premiumplacements'].first['premiumplacement']
+        placements['@realestateid'] if placements.is_a? Hash
+      end
     end
   end
 end
