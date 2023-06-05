@@ -23,20 +23,23 @@ RSpec.describe Immobilienscout::API::OnTopPlacement, type: :model do
 
   describe '#add' do
     context 'when request is successful' do
-      it 'returns created' do
-        VCR.use_cassette('on_top_placement_creation_successful_is24') do
-          parsed_response = described_class.add(ext_id, placement_type)
+      it 'returns created for the respective placement type' do
+        %w[top premium showcase].each do |placement_type|
+          VCR.use_cassette("on_top_placement_#{placement_type}_creation_successful_is24") do
+            parsed_response = described_class.add(ext_id, [placement_type, 'placement'].join('_').to_sym)
 
-          expect(parsed_response.is_a?(Struct)).to eq true
-          expect(parsed_response.success?).to eq true
-          expect(parsed_response.code).to eq '200'
-          expect(parsed_response.id).to eq '123456789'
-          expect(parsed_response.messages.count).to eq 1
-          expect(parsed_response.messages.first.code).to eq 'MESSAGE_OPERATION_SUCCESSFUL'
-          expect(parsed_response.messages.first.message).to eq 'activated'
-          expect(parsed_response.messages.first.service_period_from).to eq '2023-06-02T16:49:37.000+02:00'
-          expect(parsed_response.messages.first.service_period_to).to eq '2023-07-02T23:59:59.000+02:00'
-          expect(parsed_response.messages.first.external_id).to eq 'ABC123'
+            expect(parsed_response.is_a?(Struct)).to eq true
+            expect(parsed_response.success?).to eq true
+            expect(parsed_response.code).to eq '200'
+            expect(parsed_response.messages.count).to eq 1
+            expect(parsed_response.messages.first.code).to eq 'MESSAGE_OPERATION_SUCCESSFUL'
+            expect(parsed_response.messages.first.message).to eq 'activated'
+            expect(parsed_response.messages.first.placement_type).to eq [placement_type, 'placement'].join('_').to_sym
+            expect(parsed_response.messages.first.service_period_from).to eq '2023-06-02T16:49:37.000+02:00'
+            expect(parsed_response.messages.first.service_period_to).to eq '2023-07-02T23:59:59.000+02:00'
+            expect(parsed_response.messages.first.id).to eq '123456789'
+            expect(parsed_response.messages.first.external_id).to eq 'ABC123'
+          end
         end
       end
     end
@@ -74,11 +77,11 @@ RSpec.describe Immobilienscout::API::OnTopPlacement, type: :model do
     end
   end
 
-  describe '#delete' do
+  describe '#destroy' do
     context 'when request is successful' do
       it 'returns deleted' do
         VCR.use_cassette('on_top_placement_deletion_successful_is24') do
-          parsed_response = described_class.delete(ext_id, placement_type)
+          parsed_response = described_class.destroy(ext_id, placement_type)
 
           expect(parsed_response.is_a?(Struct)).to eq true
           expect(parsed_response.success?).to eq true
@@ -94,7 +97,7 @@ RSpec.describe Immobilienscout::API::OnTopPlacement, type: :model do
         context 'when the on-top placement could not be deleted' do
           it 'returns exception invalid request' do
             VCR.use_cassette('on_top_placement_deletion_failed_is24') do
-              expect { described_class.delete(ext_id, placement_type) }.to raise_exception(Immobilienscout::Errors::ResourceValidation)
+              expect { described_class.destroy(ext_id, placement_type) }.to raise_exception(Immobilienscout::Errors::ResourceValidation)
             end
           end
         end
@@ -103,19 +106,19 @@ RSpec.describe Immobilienscout::API::OnTopPlacement, type: :model do
       context 'when params are not present or invalid' do
         context 'when is24_id is blank' do
           it 'returns exception argument error' do
-            expect { described_class.delete(nil, placement_type) }.to raise_exception(ArgumentError)
+            expect { described_class.destroy(nil, placement_type) }.to raise_exception(ArgumentError)
           end
         end
 
         context 'when placement_type is blank' do
           it 'returns exception argument error' do
-            expect { described_class.delete(ext_id, nil) }.to raise_exception(ArgumentError)
+            expect { described_class.destroy(ext_id, nil) }.to raise_exception(ArgumentError)
           end
         end
 
         context 'when placement_type is invalid' do
           it 'returns exception argument error' do
-            expect { described_class.delete(ext_id, :foobar) }.to raise_exception(ArgumentError)
+            expect { described_class.destroy(ext_id, :foobar) }.to raise_exception(ArgumentError)
           end
         end
       end
