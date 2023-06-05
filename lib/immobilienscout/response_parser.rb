@@ -38,8 +38,8 @@ module Immobilienscout
     def messages(response_body)
       if response_body['common.messages']
         common_message(response_body)
-      elsif on_top_placement_response?(response_body)
-        on_top_placement(response_body)
+      elsif on_top_placement_type(response_body)
+        on_top_placement_message(response_body)
       else
         response_body
       end
@@ -49,18 +49,6 @@ module Immobilienscout
       messages = response_body['common.messages'].first['message']
       messages = [messages] if messages.is_a? Hash
       messages.map { |msg| Message.new(nil, msg['messageCode'], msg['message'], msg['id']) }
-    end
-
-    def on_top_placement_response?(response_body)
-      if response_body['showcaseplacement.showcaseplacements']
-        true
-      elsif response_body['premiumplacement.premiumplacements']
-        true
-      elsif response_body['topplacement.topplacements']
-        true
-      else
-        false
-      end
     end
 
     def on_top_placement_type(response_body)
@@ -73,12 +61,11 @@ module Immobilienscout
       end
     end
 
-    def on_top_placement(response_body)
+    def on_top_placement_message(response_body)
       placement_type = on_top_placement_type(response_body)
       is24_placement_type = Immobilienscout::API::OnTopPlacement.placement_type_for_is24(placement_type)
 
       placements = response_body["#{is24_placement_type}.#{is24_placement_type.pluralize}"].first[is24_placement_type]
-
       placements = [placements] if placements.is_a? Hash
       placements.map do |placement|
         OnTopPlacementMessage.new(
