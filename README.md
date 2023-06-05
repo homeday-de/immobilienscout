@@ -78,19 +78,24 @@ Immobilienscout::API::Attachment.destroy(is24_id, attachment_id)
 ```
 
 #### On-Top Placements
-- Add On-Top Placement
+- List all on-top placements
+```ruby
+Immobilienscout::API::OnTopPlacement.index(placement_type)
+```
+
+- Add on-top placement
 ```ruby
 Immobilienscout::API::OnTopPlacement.add(is24_id, placement_type)
 ```
 
-- Show On-Top Placement
+- Show on-top placement
 ```ruby
 Immobilienscout::API::OnTopPlacement.show(is24_id, placement_type)
 ```
 
-- Delete On-Top Placement
+- Delete on-top placement
 ```ruby
-Immobilienscout::API::OnTopPlacement.delete(is24_id, placement_type)
+Immobilienscout::API::OnTopPlacement.destroy(is24_id, placement_type)
 ```
 
 #### Report
