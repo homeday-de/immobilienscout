@@ -69,8 +69,8 @@ module Immobilienscout
       placements = [placements] if placements.is_a? Hash
       placements.map do |placement|
         OnTopPlacementMessage.new(
-          placement['messageCode'], placement['message'], placement_type, placement['servicePeriod']['dateFrom'],
-          placement['servicePeriod']['dateTo'], placement['@realestateid'], placement['externalId']
+          placement['messageCode'], placement['message'], placement_type, placement['servicePeriod'].try(:[], 'dateFrom'),
+          placement['servicePeriod'].try(:[], 'dateTo'), placement['@realestateid'], placement['externalId']
         )
       end
     end

@@ -59,7 +59,7 @@ http_interactions:
       - mAel7ipkPN1vPra51FDZK0irljIRYvWeVtSn-DFfK20_x5LriXoTmA==
     body:
       encoding: UTF-8
-      string: '{"topplacement.topplacements": [{"topplacement": {"@realestateid": "123456789","messageCode": "MESSAGE_OPERATION_SUCCESSFUL","message": "activated","servicePeriod": {"dateFrom": "2023-06-02T16:49:37.000+02:00","dateTo": "2023-07-02T23:59:59.000+02:00"},"externalId": "ABC123"}}]}'
+      string: '{"common.messages":[{"message":{"messageCode":"MESSAGE_RESOURCE_CREATED","message":"Resource [topplacement] with id [] has been created.","id":""}}]}'
     http_version: null
   recorded_at: Fri, 02 Jun 2023 14:05:57 GMT
 recorded_with: VCR 5.1.0

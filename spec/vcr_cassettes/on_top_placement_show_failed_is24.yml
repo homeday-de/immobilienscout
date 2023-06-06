@@ -1,7 +1,7 @@
 ---
 http_interactions:
 - request:
-    method: delete
+    method: get
     uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/ext-ABC123/premiumplacement
     body:
       encoding: UTF-8
@@ -59,7 +59,7 @@ http_interactions:
       - mAel7ipkPN1vPra51FDZK0irljIRYvWeVtSn-DFfK20_x5LriXoTmA==
     body:
       encoding: UTF-8
-      string: '{"common.messages":[{"message":{"messageCode":"MESSAGE_RESOURCE_DELETED","message":"Resource [premiumplacement] with id [] has been deleted."}}]}'
+      string: '{"premiumplacement.premiumplacements": [{"premiumplacement": {"@realestateid": "123456789","messageCode": "ERROR_REQUESTED_DATA_NOT_FOUND","message": "not activated","externalId": "ABC123"}}]}'
     http_version: null
   recorded_at: Fri, 02 Jun 2023 14:05:57 GMT
 recorded_with: VCR 5.1.0
