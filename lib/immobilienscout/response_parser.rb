@@ -69,10 +69,15 @@ module Immobilienscout
       placements.map do |placement|
         OnTopPlacementMessage.new(
           placement['messageCode'], placement['message'], placement_type,
-          placement['servicePeriod'].try(:[], 'dateFrom'), placement['servicePeriod'].try(:[], 'dateTo'),
+          service_period(placement, 'dateFrom'), service_period(placement, 'dateTo'),
           placement['@realestateid'], placement['externalId']
         )
       end
+    end
+
+    def service_period(placement, date_key)
+      date_string = placement['servicePeriod'].try(:[], date_key)
+      date_string ? DateTime.parse(date_string) : nil
     end
 
     def id(response_body)

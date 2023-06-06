@@ -86,8 +86,8 @@ RSpec.describe Immobilienscout::API::OnTopPlacement, type: :model do
             expect(parsed_response.messages.first.code).to eq 'MESSAGE_OPERATION_SUCCESSFUL'
             expect(parsed_response.messages.first.message).to eq 'activated'
             expect(parsed_response.messages.first.placement_type).to eq [placement_type, 'placement'].join('_').to_sym
-            expect(parsed_response.messages.first.service_period_from).to eq '2023-06-02T16:49:37.000+02:00'
-            expect(parsed_response.messages.first.service_period_to).to eq '2023-07-02T23:59:59.000+02:00'
+            expect(parsed_response.messages.first.service_period_from).to eq DateTime.parse('2023-06-02T16:49:37.000+02:00')
+            expect(parsed_response.messages.first.service_period_to).to eq DateTime.parse('2023-07-02T23:59:59.000+02:00')
             expect(parsed_response.messages.first.id).to eq '123456789'
             expect(parsed_response.messages.first.external_id).to eq 'ABC123'
           end
