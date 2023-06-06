@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.0.9] - 2023-06-02
 * Add support for managing On-Top Placements
 * Remove support for Ruby < `2.6`
+* Update `ActiveSupport` to `6.1.7.3`
 
 ## [0.0.8] - 2020-07-16
 * Added retrieve_all endpoint to attachments to retrieve all attachments of a property
