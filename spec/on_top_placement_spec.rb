@@ -74,7 +74,7 @@ RSpec.describe Immobilienscout::API::OnTopPlacement, type: :model do
 
   describe '#show' do
     context 'when request is successful' do
-      it 'returns the respective placement' do
+      it 'returns the respective on-top placement' do
         %w[top premium showcase].each do |placement_type|
           VCR.use_cassette("on_top_placement_show_#{placement_type}_is24") do
             parsed_response = described_class.show(ext_id, [placement_type, 'placement'].join('_').to_sym)
@@ -96,7 +96,7 @@ RSpec.describe Immobilienscout::API::OnTopPlacement, type: :model do
     end
 
     context 'when request is unsuccessful' do
-      it '' do
+      it 'returns the error message' do
         VCR.use_cassette('on_top_placement_show_failed_is24') do
           parsed_response = described_class.show(ext_id, default_placement_type)
 

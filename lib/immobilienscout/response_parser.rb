@@ -39,7 +39,7 @@ module Immobilienscout
       if response_body['common.messages']
         common_message(response_body)
       elsif on_top_placement_type(response_body)
-        on_top_placement_message(response_body)
+        on_top_placement_message(response_body, on_top_placement_type(response_body))
       else
         response_body
       end
@@ -61,16 +61,16 @@ module Immobilienscout
       end
     end
 
-    def on_top_placement_message(response_body)
-      placement_type = on_top_placement_type(response_body)
+    def on_top_placement_message(response_body, placement_type)
       is24_placement_type = Immobilienscout::API::OnTopPlacement.placement_type_for_is24(placement_type)
 
       placements = response_body["#{is24_placement_type}.#{is24_placement_type.pluralize}"].first[is24_placement_type]
       placements = [placements] if placements.is_a? Hash
       placements.map do |placement|
         OnTopPlacementMessage.new(
-          placement['messageCode'], placement['message'], placement_type, placement['servicePeriod'].try(:[], 'dateFrom'),
-          placement['servicePeriod'].try(:[], 'dateTo'), placement['@realestateid'], placement['externalId']
+          placement['messageCode'], placement['message'], placement_type,
+          placement['servicePeriod'].try(:[], 'dateFrom'), placement['servicePeriod'].try(:[], 'dateTo'),
+          placement['@realestateid'], placement['externalId']
         )
       end
     end
