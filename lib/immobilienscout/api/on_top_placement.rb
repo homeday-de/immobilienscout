@@ -18,7 +18,7 @@ module Immobilienscout
         end
 
         def index(placement_type)
-          raise ArgumentError unless valid_placement_type?(placement_type.to_sym)
+          raise ArgumentError unless valid_placement_type?(placement_type&.to_sym)
 
           index_url = index_url(placement_type_for_is24(placement_type))
           execute_get_request(index_url)
@@ -46,7 +46,7 @@ module Immobilienscout
 
         def valid_arguments?(is24_id, placement_type)
           return false unless is24_id.present?
-          return false unless valid_placement_type?(placement_type.to_sym)
+          return false unless valid_placement_type?(placement_type&.to_sym)
 
           true
         end
