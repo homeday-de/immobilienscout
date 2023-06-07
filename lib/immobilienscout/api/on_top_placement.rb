@@ -18,7 +18,7 @@ module Immobilienscout
         end
 
         def index(placement_type)
-          raise ArgumentError unless valid_placement_type?(placement_type)
+          raise ArgumentError unless valid_placement_type?(placement_type.to_sym)
 
           index_url = index_url(placement_type_for_is24(placement_type))
           execute_get_request(index_url)
@@ -39,14 +39,14 @@ module Immobilienscout
         end
 
         def placement_type_for_is24(placement_type)
-          {}.tap { |hash| PLACEMENT_TYPES.each { |t| hash[t] = t.to_s.delete('_') } }[placement_type]
+          {}.tap { |hash| PLACEMENT_TYPES.each { |t| hash[t] = t.to_s.delete('_') } }[placement_type.to_sym]
         end
 
         private
 
         def valid_arguments?(is24_id, placement_type)
           return false unless is24_id.present?
-          return false unless valid_placement_type?(placement_type)
+          return false unless valid_placement_type?(placement_type.to_sym)
 
           true
         end
@@ -58,12 +58,14 @@ module Immobilienscout
           true
         end
 
-        def url(is24_id, placement_type)
-          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}/#{placement_type}"
+        # rubocop:disable Layout/LineLength
+        def url(is24_id, is24_placement_type)
+          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}/#{is24_placement_type}"
         end
+        # rubocop:enable Layout/LineLength
 
-        def index_url(placement_type)
-          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/#{placement_type}/all"
+        def index_url(is24_placement_type)
+          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/#{is24_placement_type}/all"
         end
 
         def execute_post_request(url)
