@@ -3,7 +3,8 @@ sudo: false
 language: ruby
 cache: bundler
 rvm:
-  - 2.6.5
+  - 2.6.10
+  - 2.7.8
 script:
   - bundle exec rubocop
   - bundle exec rspec
