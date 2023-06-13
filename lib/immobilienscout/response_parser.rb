@@ -36,13 +36,12 @@ module Immobilienscout
     end
 
     def messages(response_body)
-      if response_body['common.messages']
-        common_message(response_body)
-      elsif on_top_placement_type(response_body)
-        on_top_placement_message(response_body, on_top_placement_type(response_body))
-      else
-        response_body
-      end
+      return common_message(response_body) if response_body['common.messages']
+
+      type = on_top_placement_type(response_body)
+      return on_top_placement_message(response_body, type) if type
+
+      response_body
     end
 
     def common_message(response_body)
@@ -52,20 +51,24 @@ module Immobilienscout
     end
 
     def on_top_placement_type(response_body)
-      if response_body['showcaseplacement.showcaseplacements']
-        :showcase_placement
-      elsif response_body['premiumplacement.premiumplacements']
-        :premium_placement
-      elsif response_body['topplacement.topplacements']
-        :top_placement
-      end
+      return :showcase_placement if response_body['showcaseplacement.showcaseplacements']
+      return :premium_placement if response_body['premiumplacement.premiumplacements']
+      return :top_placement if response_body['topplacement.topplacements']
     end
 
     def on_top_placement_message(response_body, placement_type)
       is24_placement_type = Immobilienscout::API::OnTopPlacement.placement_type_for_is24(placement_type)
 
+      placements = extract_placements(response_body, is24_placement_type)
+      build_on_top_placement_messages(placements, placement_type)
+    end
+
+    def extract_placements(response_body, is24_placement_type)
       placements = response_body["#{is24_placement_type}.#{is24_placement_type.pluralize}"].first[is24_placement_type]
-      placements = [placements] if placements.is_a? Hash
+      placements.is_a?(Hash) ? [placements] : placements
+    end
+
+    def build_on_top_placement_messages(placements, placement_type)
       placements.map do |placement|
         OnTopPlacementMessage.new(
           placement['messageCode'], placement['message'], placement_type,
@@ -76,7 +79,7 @@ module Immobilienscout
     end
 
     def service_period(placement, date_key)
-      date_string = placement['servicePeriod'].try(:[], date_key)
+      date_string = placement.dig('servicePeriod', date_key)
       date_string ? DateTime.parse(date_string) : nil
     end
 
