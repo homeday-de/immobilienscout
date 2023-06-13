@@ -71,11 +71,11 @@ module Immobilienscout
         end
 
         def create_url
-          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate"
+          "#{Immobilienscout::Client.me_url}/realestate"
         end
 
         def update_url(is24_id)
-          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}"
+          "#{Immobilienscout::Client.me_url}/realestate/#{is24_id}"
         end
 
         def publish_url
@@ -83,11 +83,11 @@ module Immobilienscout
         end
 
         def destroy_url(is24_id)
-          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}"
+          "#{Immobilienscout::Client.me_url}/realestate/#{is24_id}"
         end
 
         def show_url(is24_id)
-          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}"
+          "#{Immobilienscout::Client.me_url}/realestate/#{is24_id}"
         end
       end
     end

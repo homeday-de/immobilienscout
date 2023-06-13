@@ -58,14 +58,12 @@ module Immobilienscout
           true
         end
 
-        # rubocop:disable Layout/LineLength
         def url(is24_id, is24_placement_type)
-          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}/#{is24_placement_type}"
+          "#{Immobilienscout::Client.me_url}/realestate/#{is24_id}/#{is24_placement_type}"
         end
-        # rubocop:enable Layout/LineLength
 
         def index_url(is24_placement_type)
-          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/#{is24_placement_type}/all"
+          "#{Immobilienscout::Client.api_url}/#{is24_placement_type}/all"
         end
 
         def execute_post_request(url)

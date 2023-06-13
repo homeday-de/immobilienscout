@@ -10,5 +10,9 @@ module Immobilienscout
 
       LIVE_URL
     end
+
+    def self.me_url
+      "#{api_url}/restapi/api/offer/v1.0/user/me"
+    end
   end
 end
