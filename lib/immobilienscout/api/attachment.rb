@@ -59,22 +59,19 @@ module Immobilienscout
         end
 
         def add_url(is24_id)
-          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}/attachment"
+          "#{Immobilienscout::Client.me_url}/realestate/#{is24_id}/attachment"
         end
 
         def put_order_url(is24_id)
-          "#{Immobilienscout::Client.api_url}/restapi/api/"\
-          "offer/v1.0/user/me/realestate/#{is24_id}/attachment/attachmentsorder"
+          "#{Immobilienscout::Client.me_url}/realestate/#{is24_id}/attachment/attachmentsorder"
         end
 
         def retrieve_all_url(is24_id)
-          "#{Immobilienscout::Client.api_url}/restapi/api/"\
-          "offer/v1.0/user/me/realestate/#{is24_id}/attachment"
+          "#{Immobilienscout::Client.me_url}/realestate/#{is24_id}/attachment"
         end
 
         def destroy_url(is24_id, attachment_id)
-          "#{Immobilienscout::Client.api_url}/restapi/api/"\
-          "offer/v1.0/user/me/realestate/#{is24_id}/attachment/#{attachment_id}"
+          "#{Immobilienscout::Client.me_url}/realestate/#{is24_id}/attachment/#{attachment_id}"
         end
       end
     end

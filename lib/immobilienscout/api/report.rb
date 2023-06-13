@@ -30,7 +30,7 @@ module Immobilienscout
         end
 
         def retrieve_url(is24_id)
-          "#{Immobilienscout::Client.api_url}/restapi/api/offer/v1.0/user/me/realestate/#{is24_id}/dailyreport"
+          "#{Immobilienscout::Client.me_url}/realestate/#{is24_id}/dailyreport"
         end
       end
     end

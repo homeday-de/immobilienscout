@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/user/me/realestate/ext-ABC123/premiumplacement
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Authorization:
+      - OAuth oauth_consumer_key=consumer_key,oauth_nonce=LYiEWxQUuA,oauth_signature_method=HMAC-SHA1,oauth_timestamp=1560263360,oauth_token=access_token,oauth_version=1.0,oauth_signature=DZd9mD1Esy87NVjfJbDiA%2Fc5FTA%3D
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+  response:
+    status:
+      code: 412
+      message: ''
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '192'
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 02 Jun 2023 14:05:57 GMT
+      L-Is24-Apiclient:
+      - consumer_key
+      L-Is24-Requestrefnum:
+      - 77791e25-0bdf-4c88-b31a-03b51e0d35f2
+      L-Is24-Causerid:
+      - '117533741'
+      L-Is24-Resourceid:
+      - ext-8T7HCVQ2
+      - ext-8T7HCVQ2
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains
+      X-Frame-Options:
+      - DENY
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 759fdd9f923ecbc08bad5c12c5d4db9a.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - TXL50-P3
+      X-Amz-Cf-Id:
+      - mAel7ipkPN1vPra51FDZK0irljIRYvWeVtSn-DFfK20_x5LriXoTmA==
+    body:
+      encoding: UTF-8
+      string: '{"common.messages":[{"message":{"messageCode":"ERROR_RESOURCE_VALIDATION","message":"Error while validating input for the resource. [MESSAGE: the object could not be premium placed: null]"}}]}'
+    http_version: null
+  recorded_at: Fri, 02 Jun 2023 14:05:57 GMT
+recorded_with: VCR 5.1.0
